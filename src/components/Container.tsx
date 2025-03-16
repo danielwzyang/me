@@ -6,13 +6,20 @@ interface Props {
 }
 
 export default function Container(props: Props) {
+    function updateMousePos(e: MouseEvent) {
+        document.documentElement.style.setProperty("--x", e.clientX + "px")
+        document.documentElement.style.setProperty("--y", e.clientY + "px")
+    }
+    
+    document.addEventListener("mousemove", (e) => updateMousePos(e))
+
     return <>
-        <div class="w-full h-full grid-pattern absolute -z-1 hidden sm:block">
+        <div class="w-full h-full grid-pattern -z-1 fixed! top-0 hidden sm:block">
             <h1 class="m-5">hi!!</h1>
         </div>
-        <div class="mx-auto w-[700px] max-w-[80%] flex flex-col">
+        <div class="mx-auto w-[700px] max-w-[80%] flex flex-col overflow-clip pb-10">
             <Navbar />
-            { props.children }
+            {props.children}
         </div>
     </>
 }

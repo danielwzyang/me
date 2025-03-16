@@ -3,21 +3,28 @@
 [data-theme="light"] {
     --bg: #ffffff;
     --primary: #1f1f1f;
-    --secondary: #393939;
+    --secondary: #6b6b6b;
+    --tertiary: #999999;
     --gridlines: #efefef;
 }
 
 [data-theme="dark"] {
     --bg: #1f1f1f;
     --primary: #ffffff;
-    --secondary: #dcdcdc;
+    --secondary: #b5b5b5;
+    --tertiary: #818181;
     --gridlines: #272727;
 }
 
 body {
+    height: 100%;
     font-family: "Onest", serif;
     background-color: var(--bg);
     color: var(--primary);
+}
+
+::-webkit-scrollbar {
+    width: 0px;
 }
 
 p {
@@ -37,4 +44,37 @@ p {
     overflow: hidden;
     mask-image: radial-gradient(circle 75px at var(--x, 50%) var(--y, 50%), rgba(0, 0, 0, 1) 00%, rgba(0, 0, 0, 0) 100%);
     transition: mask-image 0.1s;
+}
+
+@keyframes moveBack {
+    100% {
+        opacity: 1;
+        transform: translate(0px, 0px)
+    }
+}
+
+.animate-move-up {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: moveBack .5s ease-in-out forwards;
+}
+
+.animate-move-right {
+    opacity: 0;
+    transform: translateX(-50px);
+    animation: moveBack .5s ease-in-out forwards;
+}
+
+.animate-move-left {
+    opacity: 0;
+    transform: translateX(50px);
+    animation: moveBack .5s ease-in-out forwards;
+}
+
+ul {
+    list-style-type: circle;
+}
+
+li {
+    margin-left: 20px;
 }
