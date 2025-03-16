@@ -31,9 +31,9 @@ export default function Home() {
 
                 <div class="flex gap-2 items-center">
                     <div class="relative h-8 w-fit overflow-hidden rounded-lg p-[2.5px] group">
-                        <span class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#9ba8cf_0%,#b29bcf_50%,#9ba8cf_100%)] opacity-0 group-hover:opacity-100 transition"></span>
+                        <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#4e40a8_0%,#927cbf_50%,#4e40a8_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
 
-                        <a href="/resume" class="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-md bg-(--secondary) px-3 py-1 text-(--bg) backdrop-blur-sm font-extrabold">Resume</a>
+                        <a href="/resume" class="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-md bg-(--secondary) px-3 py-1 text-(--bg) backdrop-blur-sm font-extrabold border border-(--bg)">Resume</a>
                     </div>
 
                     <a href="https://www.linkedin.com/in/danielwzyang/" class="ml-auto hover:scale-110 transition">
