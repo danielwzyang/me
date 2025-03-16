@@ -1,1 +1,40 @@
 @import "tailwindcss";
+
+[data-theme="light"] {
+    --bg: #ffffff;
+    --primary: #1f1f1f;
+    --secondary: #393939;
+    --gridlines: #efefef;
+}
+
+[data-theme="dark"] {
+    --bg: #1f1f1f;
+    --primary: #ffffff;
+    --secondary: #dcdcdc;
+    --gridlines: #272727;
+}
+
+body {
+    font-family: "Onest", serif;
+    background-color: var(--bg);
+    color: var(--primary);
+}
+
+p {
+    color: var(--secondary)
+}
+
+.serif {
+    font-family: "Aleo", serif;
+}
+
+.grid-pattern {
+    background-image:
+        linear-gradient(to right, var(--gridlines) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--gridlines) 1px, transparent 1px);
+    background-size: 24px 24px;
+    position: absolute;
+    overflow: hidden;
+    mask-image: radial-gradient(circle 75px at var(--x, 50%) var(--y, 50%), rgba(0, 0, 0, 1) 00%, rgba(0, 0, 0, 0) 100%);
+    transition: mask-image 0.1s;
+}
