@@ -105,7 +105,7 @@ export default function Home() {
                 <div>
                     <p class="text-xs text-(--tertiary)!">Oct 2024 - Present</p>
                     <h1>Stuyvesant Student Union</h1>
-                    <p class="text-sm">Website Developer</p>
+                    <p class="text-sm">Web Developer</p>
                     <p class="text-sm font-light text-(--tertiary)!">
                         Collaborated to revamp the appearance of Epsilon, Stuyvesant's student hub. Created lessons for inexperienced members on HTML, CSS, JS, and React.
                     </p>
