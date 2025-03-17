@@ -62,7 +62,7 @@ export default function Home() {
                 <div>
                     <p class="text-xs text-(--tertiary)!">Sep 2022 - Jun 2026</p>
                     <h1>Stuyvesant High School</h1>
-                    <p class="text-sm text-(--secondary) font-extralight">
+                    <p class="text-sm text-(--secondary) font-light">
                         Unweighted GPA: <span class="text-(--tertiary)">96.88</span> <br />
                         Advanced Coursework:
                         <span class="text-(--tertiary)"> AP Biology, AP European History, AP Computer Science A, AP Precalculus, AP Macroeconomics</span>
@@ -82,7 +82,7 @@ export default function Home() {
                     <p class="text-xs text-(--tertiary)!">Nov 2024 - Present</p>
                     <h1>StuyPulse</h1>
                     <p class="text-sm">IT Director</p>
-                    <p class="text-sm font-extralight text-(--tertiary)!">
+                    <p class="text-sm font-light text-(--tertiary)!">
                         Created MyPulse, an attendance tracking website used by over 165 members of the team. Exported attendance data for leadership to use.
                     </p>
                 </div>
@@ -94,7 +94,7 @@ export default function Home() {
                     <p class="text-xs text-(--tertiary)!">Nov 2024 - Present</p>
                     <h1>The Stuyvesant Spectator</h1>
                     <p class="text-sm">Web Developer + Design Lead</p>
-                    <p class="text-sm font-extralight text-(--tertiary)!">
+                    <p class="text-sm font-light text-(--tertiary)!">
                         Led the design and creation of Gamma, a hub for Spectator's Web Department members. Contributed to the main website with design documentation, bug fixes, and stylistic updates.
                     </p>
                 </div>
@@ -106,7 +106,7 @@ export default function Home() {
                     <p class="text-xs text-(--tertiary)!">Oct 2024 - Present</p>
                     <h1>Stuyvesant Student Union</h1>
                     <p class="text-sm">Website Developer</p>
-                    <p class="text-sm font-extralight text-(--tertiary)!">
+                    <p class="text-sm font-light text-(--tertiary)!">
                         Collaborated to revamp the appearance of Epsilon, Stuyvesant's student hub. Created lessons for inexperienced members on HTML, CSS, JS, and React.
                     </p>
                 </div>
@@ -118,7 +118,7 @@ export default function Home() {
                     <p class="text-xs text-(--tertiary)!">Oct 2024 - Present</p>
                     <h1>Stuyvesant Competitive Coding Club</h1>
                     <p class="text-sm">Website Manager</p>
-                    <p class="text-sm font-extralight text-(--tertiary)!">
+                    <p class="text-sm font-light text-(--tertiary)!">
                         Redesigned, created, and managed a club website for the competitive coding club to host announcements, lessons, and resources.
                     </p>
                 </div>
@@ -129,7 +129,7 @@ export default function Home() {
                     <p class="text-xs text-(--tertiary)!">Jan 2024 - Present</p>
                     <h1>Stuyvesant Donated Apparel</h1>
                     <p class="text-sm">President</p>
-                    <p class="text-sm font-extralight text-(--tertiary)!">
+                    <p class="text-sm font-light text-(--tertiary)!">
                         Founded the club and coordinated designing, printing, and selling of clothes. Directed all of the modeling shoots and created the club website.
                     </p>
                 </div>

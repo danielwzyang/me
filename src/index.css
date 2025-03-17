@@ -3,16 +3,16 @@
 [data-theme="light"] {
     --bg: #ffffff;
     --primary: #1f1f1f;
-    --secondary: #6b6b6b;
-    --tertiary: #999999;
+    --secondary: #323232;
+    --tertiary: #676767;
     --gridlines: #dbdbdb;
 }
 
 [data-theme="dark"] {
     --bg: #1f1f1f;
     --primary: #ffffff;
-    --secondary: #b5b5b5;
-    --tertiary: #818181;
+    --secondary: #d4d4d4;
+    --tertiary: #b0b0b0;
     --gridlines: #272727;
 }
 
