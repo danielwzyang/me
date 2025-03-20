@@ -4,7 +4,7 @@ import Project from "../components/Project"
 export default function Projects() {
     return <Container>
         <h1 class="text-2xl serif mb-4">my projects</h1>
-        <div class="columns-1 sm:columns-2 gap-5 animate-move-up">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 animate-move-up">
             <Project
                 name="MyPulse"
                 blurb="An attendance tracking website made for the Stuyvesant FIRST Robotics team."
