@@ -1,4 +1,4 @@
-import Container from "./components/Container"
+import Container from "../components/Container"
 
 export default function Home() {
     return <Container>
@@ -113,7 +113,7 @@ export default function Home() {
             </div>
 
             <div class="flex items-center animate-move-up gap-4" style={{ "animation-delay": "2.4s" }}>
-                <img src="/icons/stuyccc.png" alt="stuyccc" width={50} class="rounded-4xl mt-2  mb-auto" />
+                <img src="/icons/stuyccc/cover.png" alt="stuyccc" width={50} class="rounded-4xl mt-2  mb-auto" />
                 <div>
                     <p class="text-xs text-(--tertiary)!">Oct 2024 - Present</p>
                     <h1>Stuyvesant Competitive Coding Club</h1>

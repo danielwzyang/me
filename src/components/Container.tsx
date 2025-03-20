@@ -17,7 +17,7 @@ export default function Container(props: Props) {
         <div class="w-full h-full grid-pattern -z-1 fixed! top-0 hidden sm:block">
             <h1 class="m-5">hi!!</h1>
         </div>
-        <div class="mx-auto w-[700px] max-w-[80%] flex flex-col overflow-clip pb-10">
+        <div class="mx-auto w-[640px] max-w-[80%] flex flex-col overflow-y-clip pb-10">
             <Navbar />
             {props.children}
         </div>

@@ -5,7 +5,8 @@
     --primary: #1f1f1f;
     --secondary: #323232;
     --tertiary: #676767;
-    --gridlines: #dbdbdb;
+    --lines: #dbdbdb;
+    --links: #6e5c9c;
 }
 
 [data-theme="dark"] {
@@ -13,7 +14,8 @@
     --primary: #ffffff;
     --secondary: #d4d4d4;
     --tertiary: #b0b0b0;
-    --gridlines: #272727;
+    --lines: #3a3a3a;
+    --links: #9b83d6;
 }
 
 body {
@@ -37,8 +39,8 @@ p {
 
 .grid-pattern {
     background-image:
-        linear-gradient(to right, var(--gridlines) 1px, transparent 1px),
-        linear-gradient(to bottom, var(--gridlines) 1px, transparent 1px);
+        linear-gradient(to right, var(--lines) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--lines) 1px, transparent 1px);
     background-size: 24px 24px;
     position: absolute;
     overflow: hidden;
@@ -71,10 +73,10 @@ p {
     animation: moveBack .5s ease-in-out forwards;
 }
 
-ul {
-    list-style-type: circle;
+p a {
+    color: var(--links);
 }
 
-li {
-    margin-left: 20px;
+p a:hover {
+    opacity: 80%;
 }
