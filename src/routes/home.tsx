@@ -27,7 +27,7 @@ export default function Home() {
                     <div class="relative h-8 w-fit overflow-hidden rounded-lg p-[2.5px] group animate-move-left" style={{ "animation-delay": "1s" }}>
                         <span class="absolute inset-[-100%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#4e40a8_0%,#927cbf_50%,#4e40a8_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
 
-                        <a href="/resume" class="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-md bg-(--secondary) px-3 py-1 text-(--bg) backdrop-blur-sm font-extrabold border border-(--bg)">Resume</a>
+                        <a href="/resume.pdf" target="_blank" class="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-md bg-(--secondary) px-3 py-1 text-(--bg) backdrop-blur-sm font-extrabold border border-(--bg)">Resume</a>
                     </div>
 
                     <a href="https://www.linkedin.com/in/danielwzyang/" class="ml-auto hover:scale-110 transition animate-move-right" style={{ "animation-delay": "1s" }}>
@@ -126,7 +126,7 @@ export default function Home() {
             <div class="flex items-center animate-move-up gap-4" style={{ "animation-delay": "2.6s" }}>
                 <img src="/icons/sda.png" alt="sda" width={50} class="rounded-4xl mt-2  mb-auto" />
                 <div>
-                    <p class="text-xs text-(--tertiary)!">Jan 2024 - Present</p>
+                    <p class="text-xs text-(--tertiary)!">March 2024 - Present</p>
                     <h1>Stuyvesant Donated Apparel</h1>
                     <p class="text-sm">President</p>
                     <p class="text-sm font-light text-(--tertiary)!">
