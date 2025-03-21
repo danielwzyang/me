@@ -1,7 +1,7 @@
 import Container from "../../components/Container"
 
 export default function MyPulse() {
-    return <Container>
+    return <Container title="MyPulse">
         <h1 class="text-3xl serif mb-3">MyPulse</h1>
         <img src="/projects/mypulse/cover.png" alt="mypulse" class="mb-5 rounded-lg" />
         <div class="flex flex-col gap-3">

@@ -1,14 +1,14 @@
 import Container from "../../components/Container"
 
 export default function StuyCCC() {
-    return <Container>
+    return <Container title="StuyCCC">
         <h1 class="text-3xl serif mb-3">StuyCCC</h1>
         <img src="/projects/stuyccc/cover.png" alt="stuyccc" class="mb-5 rounded-lg" />
         <div class="flex flex-col gap-3">
             <p>
                 Stuyvesant has some incredibly talented competitive programmers, all of them gathered in the club StuyCCC. I've never
                 really done much in their club besides attending competitions, but I browsed their
-                <a href="https://old.stuyccc.com">old website </a>
+                <a href="https://old.stuyccc.com"> old website </a>
                 a few times for links to lessons and practice problems. Although practical, their website was never very stunning,
                 and I wanted to revamp it.
             </p>

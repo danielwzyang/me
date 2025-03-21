@@ -1,8 +1,10 @@
 import { JSX } from "solid-js"
 import Navbar from "./Navbar"
+import { MetaProvider, Title } from "@solidjs/meta"
 
 interface Props {
     children: JSX.Element
+    title: string
 }
 
 export default function Container(props: Props) {
@@ -13,7 +15,8 @@ export default function Container(props: Props) {
     
     document.addEventListener("mousemove", (e) => updateMousePos(e))
 
-    return <>
+    return <MetaProvider>
+        <Title>{props.title}</Title>
         <div class="w-full h-full grid-pattern -z-1 fixed! top-0 hidden sm:block">
             <h1 class="m-5">hi!!</h1>
         </div>
@@ -21,5 +24,5 @@ export default function Container(props: Props) {
             <Navbar />
             {props.children}
         </div>
-    </>
+    </MetaProvider>
 }

@@ -6,7 +6,7 @@
     --secondary: #323232;
     --tertiary: #676767;
     --lines: #dbdbdb;
-    --links: #6e5c9c;
+    --links: #4e86db;
 }
 
 [data-theme="dark"] {
@@ -15,7 +15,7 @@
     --secondary: #d4d4d4;
     --tertiary: #b0b0b0;
     --lines: #3a3a3a;
-    --links: #9b83d6;
+    --links: #ac8bff;
 }
 
 body {
@@ -78,5 +78,5 @@ p a {
 }
 
 p a:hover {
-    opacity: 80%;
+    opacity: 90%;
 }

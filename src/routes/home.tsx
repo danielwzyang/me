@@ -1,7 +1,7 @@
 import Container from "../components/Container"
 
 export default function Home() {
-    return <Container>
+    return <Container title="Daniel Yang">
         <div class="flex gap-10">
             <div class="w-full">
                 <div class="flex gap-3 mb-2 animate-move-up">

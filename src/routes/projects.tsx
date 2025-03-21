@@ -2,7 +2,7 @@ import Container from "../components/Container"
 import Project from "../components/Project"
 
 export default function Projects() {
-    return <Container>
+    return <Container title="Projects">
         <h1 class="text-2xl serif mb-4">my projects</h1>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 animate-move-up">
             <Project
@@ -21,6 +21,14 @@ export default function Projects() {
                 tech={["Typescript", "Figma", "SolidJS", "TailwindCSS", "highlight.js", "Markdown Parsing"]}
                 github="https://github.com/danielwzyang/stuyccc.com"
                 link="https://www.stuyccc.com/"
+            />
+
+            <Project
+                name="Minionese"
+                blurb="A custom lexer, parser, and interpreter written in Java."
+                image="/projects/minionese/cover.png"
+                tech={["Java", "Interpreter", "Lexing", "Parsing", "Tokenization", "OOP", "AST"]}
+                github="https://github.com/danielwzyang/minionese"
             />
         </div>
     </Container>
