@@ -23,10 +23,11 @@ export default function Minionese() {
             <p>
                 My lexer tokenizes using regular expressions. I create a
                 <a href="https://docs.oracle.com/javase/8/docs/api/java/util/regex/Matcher.html"> Matcher </a>
-                object which follows predefined groups of regular expression patterns. It reads the input string and iteratively
-                looks for matches. For each match, it creates a Token object and moves forward to the next corresponding match. Each
-                Token object stores a value and a type. These types cover important values, identifiers, and syntax that the parser
-                uses to create the AST.
+                object which follows predefined groups of regular expression patterns. These groups recognize different types of
+                tokens. For example, binary operators like + or -. The matcher reads the input string and iteratively looks for
+                matches. For each match, it creates a Token object and moves forward to the next corresponding match. Each Token
+                object stores a value and a type. These types cover important values, identifiers, and syntax that the parser uses to
+                create the AST.
             </p>
 
             <p>
@@ -38,25 +39,35 @@ export default function Minionese() {
 
             <img src="/projects/minionese/keywords.png" alt="keywords" class="mb-5 rounded-lg" />
 
-            <h1 class="text-2xl serif">Parser</h1>
+            <h1 class="text-2xl serif">Parser and Runtime Values</h1>
 
             <p>
                 After the file is interpreted, a list of tokens is generated and the parser is created. The list of tokens is
-                essentially a queue, where the tokens are added to the end in the lexer and popped from the head in the parser. 
-                Depending on the type of the token, the parser calls a helper function either parse a statement or an expression, 
+                essentially a queue, where the tokens are added to the end in the lexer and popped from the head in the parser.
+                Depending on the type of the token, the parser calls a helper function either parse a statement or an expression,
                 whose class is a child of the statement class.
             </p>
 
             <p>
-                The statement parser is pretty straightforward and uses a switch statement to parse different types of statements. 
-                The expression parser is a little more complicated and uses something called the order of precedence. Essentially, 
-                this is the order of operations including syntax. For example, multiplicative operators are higher up than additive 
-                operators. The functions that parse the expressions go up in the order of precedence. Errors are handled in a panic 
-                mode, meaning that when an unexpected token type shows up, the program prints the error and exists.
+                The statement parser is pretty straightforward and uses a switch statement to parse different types of statements.
+                The switch statement will call helper functions that essentially pop expected tokens. For example, assignment
+                statements are made of the following: define, identifier, equals, and expression. The expression parser is a little
+                more complicated and uses something called
+                <a href="https://en.wikipedia.org/wiki/Operator-precedence_grammar"> operator-precedence grammar</a>.
+                Essentially, this is the order of operations including syntax. For example, assignment is at the bottom of the order
+                of precedence. This means that when assignment occurs, the expression that the identifier is equal to has to be
+                evaluated first. The functions that parse the expressions call the function that's above it in the order of
+                precedence before creating a node. In these functions, errors are handled in a panic mode, meaning that when an
+                unexpected token type shows up, the program prints the error and exits. If no errors occur, the AST is full of nodes
+                that came from the order of tokens. Nodes can have pointers that connect to other nodes, such as the left and right
+                pointers for binary expressions.
             </p>
 
             <p>
-                Eventually, the AST is full of nodes that came from the order of tokens. Nodes can have pointers that connect to other nodes, such as the left and right pointers for binary expressions and the object and property expressions for the member expressions. Every node in the AST has its own type which can be evaluated using the evaluate function. I opted for an evaluate function for each class over a separate interpreter because I didn't want to deal with an overload of generic types.
+                Every node in the AST has its own type which can be evaluated using the evaluate function. I opted for an evaluate 
+                function for each class over a separate interpreter because I didn't want to deal with an overload of generic types. 
+                These evaluate functions return a RuntimeValue object, which has children encompassing data types, methods, and more. 
+                These RuntimeValues have operate functions, which allows for things like string concatenation or boolean operators.
             </p>
         </div>
     </Container>

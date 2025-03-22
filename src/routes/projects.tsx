@@ -27,7 +27,7 @@ export default function Projects() {
                 name="Minionese"
                 blurb="A custom lexer, parser, and interpreter written in Java."
                 image="/projects/minionese/cover.png"
-                tech={["Java", "Interpreter", "Lexing", "Parsing", "Tokenization", "OOP", "AST"]}
+                tech={["Java", "Interpreter", "Lexing", "Parsing", "RegEx", "Tokenization", "OOP"]}
                 github="https://github.com/danielwzyang/minionese"
             />
         </div>
