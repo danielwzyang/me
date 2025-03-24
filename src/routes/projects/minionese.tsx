@@ -64,10 +64,28 @@ export default function Minionese() {
             </p>
 
             <p>
-                Every node in the AST has its own type which can be evaluated using the evaluate function. I opted for an evaluate 
-                function for each class over a separate interpreter because I didn't want to deal with an overload of generic types. 
-                These evaluate functions return a RuntimeValue object, which has children encompassing data types, methods, and more. 
+                Every node in the AST has its own type which can be evaluated using the evaluate function. I opted for an evaluate
+                function for each class over a separate interpreter because I didn't want to deal with an overload of generic types.
+                These evaluate functions return a RuntimeValue object, which has children encompassing data types, methods, and more.
                 These RuntimeValues have operate functions, which allows for things like string concatenation or boolean operators.
+            </p>
+
+            <h1 class="text-2xl serif mt-3">Example Code</h1>
+
+            <img src="/projects/minionese/twosum.png" alt="two sum" class="mb-5 rounded-lg" />
+
+            <p>
+                This is some minionese code solving the famous LeetCode problem,
+                <a href="https://leetcode.com/problems/two-sum/">Two Sum</a>.
+                This problem gives an array of integers and asks for the indices of the two numbers that add up to a target sum.
+            </p>
+
+            <p>
+                The widely accepted solution for this problem is using a hashmap that records the indices of previously visited elements. When traversing through each element, a complement is calculated, which is the necessary addend to reach the target sum. The complement is then checked for existence in the hashmap. If the complement exists, that means it's been visited and we have the index of it, so we can return our solution of [complement's index, current index]. Otherwise, we store our current index as the key value pair of (currentvalue : currentindex) in the hashmap.
+            </p>
+
+            <p>
+                This is a rough explanation of the minionese code. First, the function twoSum is defined that has the parameters nums and target. Minionese is typeless, so it just assumes the inputs are valid. It creates a hashmap called seen to store the visited indices. Then, it runs a for loop to loop through the indices of the given array. If the map has the complement, then it returns an array with [complement's index, current index]. Otherwise it adds the current value and index to the hashmap. There is no other return statement because it can be assumed that the pair exists. For the test cases, I used the print function, bello, and called the twoSum function. The strings act as comments since they don't evaluate to anything in the interpreter. 
             </p>
         </div>
     </Container>
