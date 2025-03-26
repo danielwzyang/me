@@ -10,7 +10,7 @@
 }
 
 [data-theme="dark"] {
-    --bg: #1f1f1f;
+    --bg: #1d1d1d;
     --primary: #ffffff;
     --secondary: #d4d4d4;
     --tertiary: #b0b0b0;
@@ -46,31 +46,6 @@ p {
     overflow: hidden;
     mask-image: radial-gradient(circle 75px at var(--x, 50%) var(--y, 50%), rgba(0, 0, 0, 1) 00%, rgba(0, 0, 0, 0) 100%);
     transition: mask-image 0.1s;
-}
-
-@keyframes moveBack {
-    100% {
-        opacity: 1;
-        transform: translate(0px, 0px)
-    }
-}
-
-.animate-move-up {
-    opacity: 0;
-    transform: translateY(50px);
-    animation: moveBack .5s ease-in-out forwards;
-}
-
-.animate-move-right {
-    opacity: 0;
-    transform: translateX(-50px);
-    animation: moveBack .5s ease-in-out forwards;
-}
-
-.animate-move-left {
-    opacity: 0;
-    transform: translateX(50px);
-    animation: moveBack .5s ease-in-out forwards;
 }
 
 p a {
