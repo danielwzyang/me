@@ -55,3 +55,16 @@ p a {
 p a:hover {
     opacity: 90%;
 }
+
+.animate-move-up {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: moveBack .5s ease-in-out forwards;
+}
+
+@keyframes moveBack {
+    100% {
+        opacity: 1;
+        transform: translate(0px, 0px)
+    }
+}

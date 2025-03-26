@@ -11,7 +11,7 @@ export default function Home() {
 
                 <img src="/me.png" alt="me" class="rounded-xl block sm:hidden mt-3 mb-5 w-full" />
 
-                <p class=" text-pretty">
+                <p class="text-pretty">
                     I'm a junior at Stuyvesant High School who likes web development and compiler design.
                     I'm hoping to double major in computer science and math!
                 </p>
@@ -59,9 +59,9 @@ export default function Home() {
             <div class="flex items-center gap-4">
                 <img src="/icons/stuy.jpg" alt="stuy" width={50} class="rounded-4xl mt-2 mb-auto" />
                 <div>
-                    <p class="text-sm">Sep 2022 - Jun 2026</p>
                     <h1>Stuyvesant High School</h1>
-                    <p class="text-sm text-(--secondary) font-light">
+                    <p class="text-sm text-(--tertiary)!">Sep 2022 - Jun 2026</p>
+                    <p class="mt-1 text-sm font-light">
                         Unweighted GPA: 96.88 <br />
                         Advanced Coursework:
                         AP Biology, AP European History, AP Computer Science A, AP Precalculus, AP Macroeconomics

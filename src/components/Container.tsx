@@ -22,7 +22,9 @@ export default function Container(props: Props) {
         </div>
         <div class="mx-auto w-[640px] max-w-[80%] flex flex-col overflow-y-clip pb-10">
             <Navbar />
-            {props.children}
+            <div class="animate-move-up">
+                {props.children}
+            </div>
         </div>
     </MetaProvider>
 }
