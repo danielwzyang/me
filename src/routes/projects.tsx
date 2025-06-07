@@ -6,6 +6,15 @@ export default function Projects() {
         <h1 class="text-2xl serif mb-4">my projects</h1>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <Project
+                name="Goldfinger"
+                blurb="An UCI compatible chess engine using Rated ~2000 on Lichess."
+                image="/projects/goldfinger/cover.png"
+                tech={["Golang", "Chess Engine", "Backtracking", "Optimization", "Bit Manipulation", "Hash Functions", "Move Encoding"]}
+                github="https://github.com/danielwzyang/goldfinger"
+                link="https://lichess.org/@/goldfinger-bot"
+            />
+
+            <Project
                 name="MyPulse"
                 blurb="An attendance tracking website made for the Stuyvesant FIRST Robotics team."
                 image="/projects/mypulse/cover.png"
