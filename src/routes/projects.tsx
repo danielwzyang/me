@@ -7,7 +7,7 @@ export default function Projects() {
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <Project
                 name="Goldfinger"
-                blurb="An UCI compatible chess engine using Rated ~2000 on Lichess."
+                blurb="An UCI compatible chess engine rated ~2000 on Lichess."
                 image="/projects/goldfinger/cover.png"
                 tech={["Golang", "Chess Engine", "Backtracking", "Optimization", "Bit Manipulation", "Hash Functions", "Move Encoding"]}
                 github="https://github.com/danielwzyang/goldfinger"
