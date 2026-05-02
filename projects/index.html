@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Projects — Daniel Yang</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="../css/globals.css" rel="stylesheet">
+    <link href="../css/projects.css" rel="stylesheet">
+</head>
+<body>
+    <div class="content">
+        <a class="back" href="/">back to home</a>
+
+        <h1 class="page-title">projects</h1>
+
+        <section class="projects">
+
+            <article class="project">
+                <h2 class="project-title">
+                    <a href="https://github.com/danielwzyang/goldfinger" target="_blank" rel="noopener noreferrer">
+                        goldfinger
+                    </a>
+                </h2>
+                <p class="project-desc">
+                    goldfinger desc
+                </p>
+                <div class="project-body">
+                    <div class="project-body-inner">
+                        <div class="project-content">
+                            goldfinger stuff
+                        </div>
+                    </div>
+                </div>
+                <button class="read-more">read more</button>
+            </article>
+
+            <article class="project">
+                <h2 class="project-title">
+                    <a href="https://github.com/danielwzyang/my.stuypulse.com" target="_blank" rel="noopener noreferrer">
+                        mypulse
+                    </a>
+                </h2>
+                <p class="project-desc">
+                    mypulse desc
+                </p>
+                <div class="project-body">
+                    <div class="project-body-inner">
+                        <div class="project-content">
+                            mypulse stuff
+                        </div>
+                    </div>
+                </div>
+                <button class="read-more">read more</button>
+            </article>
+
+            <article class="project">
+                <h2 class="project-title">
+                    <a href="https://github.com/danielwzyang/digtokorea" target="_blank" rel="noopener noreferrer">
+                        dig to korea
+                    </a>
+                </h2>
+                <p class="project-desc">
+                    dig to korea desc 
+                </p>
+                <div class="project-body">
+                    <div class="project-body-inner">
+                        <div class="project-content">
+                            dig to korea stuff
+                        </div>
+                    </div>
+                </div>
+                <button class="read-more">read more</button>
+            </article>
+
+        </section>
+    </div>
+
+    <script>
+        const projects = document.querySelectorAll(".project");
+
+        projects.forEach(project => {
+            project.querySelector(".read-more").addEventListener("click", () => {
+                const isOpen = project.classList.contains("open");
+                const btn = project.querySelector(".read-more");
+
+                projects.forEach(p => {
+                    p.classList.remove("open");
+                    p.querySelector(".read-more").textContent = "read more";
+                });
+
+                if (!isOpen) {
+                    project.classList.add("open");
+                    btn.textContent = "read less";
+                    requestAnimationFrame(() => {
+                        project.scrollIntoView({ behavior: "smooth", block: "start" });
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
