@@ -242,6 +242,10 @@
                 
                 project.classList.toggle("open")
                 button.textContent = open ? "read more" : "read less"
+
+                const videos = project.querySelectorAll("video")
+                if (open) videos.forEach(v => v.pause())
+                else videos.forEach(v => v.play())
             })
         })
     </script>
