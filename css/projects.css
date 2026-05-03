@@ -109,7 +109,8 @@ body {
     text-align: center;
 }
 
-.project-content img {
+.project-content img,
+.project-content video {
     width: 100%;
     max-width: 400px;
     display: block;
