@@ -43,7 +43,6 @@ body {
 .project {
     border-top: 1px solid #eee;
     padding: 28px 0;
-    scroll-margin-top: 24px;
 }
 
 .project:last-child {
@@ -175,6 +174,10 @@ body {
     font-size: 13px;
     color: #999;
     margin-top: 6px;
+}
+
+.project-content figcaption a {
+    color: #999;
 }
 
 @media (max-width: 520px) {
