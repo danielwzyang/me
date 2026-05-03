@@ -144,20 +144,33 @@ body {
 }
 
 .project-content p + p {
-    margin-top: 15px;
+    margin-top: 16px;
 }
 
 .project-content figure + p {
-    margin-top: 15px;
+    margin-top: 16px;
 }
 
 .project-content p + figure {
-    margin-top: 15px;
+    margin-top: 16px;
+}
+
+.project-content figure {
+    margin: 0 auto;
+    width: fit-content;
+    text-align: center;
 }
 
 .project-content img {
     width: 100%;
+    max-width: 400px;
     display: block;
+}
+
+.project-content figcaption {
+    font-size: 13px;
+    color: #999;
+    margin-top: 6px;
 }
 
 @media (max-width: 520px) {
