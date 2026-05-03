@@ -242,10 +242,25 @@
         const projects = document.querySelectorAll(".project")
 
         projects.forEach(project => {
-            project.querySelector(".read-more").addEventListener("click", () => {
+            const body = project.querySelector(".project-body")
+            const button = project.querySelector(".read-more")
+
+            body.style.height = "0"
+
+            button.addEventListener("click", () => {
                 const open = project.classList.contains("open")
+
+                if (open) {
+                    body.style.height = body.scrollHeight + "px"
+                    requestAnimationFrame(() => {
+                        body.style.height = "0"
+                    })
+                } else {
+                    body.style.height = body.scrollHeight + "px"
+                }
+                
                 project.classList.toggle("open")
-                project.querySelector(".read-more").textContent = open ? "read more" : "read less"
+                button.textContent = open ? "read more" : "read less"
             })
         })
     </script>
