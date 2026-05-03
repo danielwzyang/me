@@ -16,7 +16,7 @@
     <link href="../css/projects.css" rel="stylesheet">
 </head>
 <body>
-    <div class="content">
+    <main>
         <a class="back" href="/">← back to home</a>
 
         <h1 class="page-title">projects</h1>
@@ -33,62 +33,60 @@
                     a chess engine written in go: peaked ~2000 elo on lichess.
                 </p>
                 <div class="project-body">
-                    <div class="project-body-inner">
-                        <div class="project-content">
-                            <p>
-                                a chess engine needs chess. chess needs a board.
-                                my first approach was arrays, but i eventually found out about bitboards:
-                                twelve 64 bit integers that each represent a unique piece.
-                                6 piece types * 2 colors = 12 integers.
-                                each bit is a square in the 8x8 board and flipping it adds and removes a piece at that square.
-                                they also happened to be
-                                <a href="https://www.chessprogramming.org/Magic_Bitboards">magic bitboards</a>,
-                                which means that the moves for sliding pieces like bishops and rooks are precalculated as bitmasks.
-                            </p>
+                    <div class="project-content">
+                        <p>
+                            a chess engine needs chess. chess needs a board.
+                            my first approach was arrays, but i eventually found out about bitboards:
+                            twelve 64 bit integers that each represent a unique piece.
+                            6 piece types * 2 colors = 12 integers.
+                            each bit is a square in the 8x8 board and flipping it adds and removes a piece at that square.
+                            they also happened to be
+                            <a href="https://www.chessprogramming.org/Magic_Bitboards">magic bitboards</a>,
+                            which means that the moves for sliding pieces like bishops and rooks are precalculated as bitmasks.
+                        </p>
 
-                            <p>
-                                goldfinger uses
-                                <a href="https://www.chessprogramming.org/PeSTO%27s_Evaluation_Function">PeSTO's eval</a>,
-                                which scores each piece based on its position using piece-square tables.
-                                there are two tables for each piece (midgame + endgame) that get tapered as the game progresses. 
-                                this is simple, but effective.
-                            </p>
+                        <p>
+                            goldfinger uses
+                            <a href="https://www.chessprogramming.org/PeSTO%27s_Evaluation_Function">PeSTO's eval</a>,
+                            which scores each piece based on its position using piece-square tables.
+                            there are two tables for each piece (midgame + endgame) that get tapered as the game progresses. 
+                            this is simple, but effective.
+                        </p>
 
-                            <figure>
-                                <video autoplay loop muted playsinline>
-                                    <source src="../assets/goldfinger/self.webm" type="video/webm">
-                                    your browser doesn't support webm :(
-                                </video>
-                                <figcaption>playing against itself with 100ms per move &amp; no opening book</figcaption>
-                            </figure>
+                        <figure>
+                            <video autoplay loop muted playsinline>
+                                <source src="../assets/goldfinger/self.webm" type="video/webm">
+                                your browser doesn't support webm :(
+                            </video>
+                            <figcaption>playing against itself with 100ms per move &amp; no opening book</figcaption>
+                        </figure>
 
-                            <p>
-                                the search algorithm i used was negamax with alpha-beta pruning with
-                                <a href="https://www.chessprogramming.org/Iterative_Deepening">iterative deepening</a>
-                                and 
-                                <a href="https://www.chessprogramming.org/Aspiration_Windows">aspiration windows</a>.
-                                each iteration will search a narrow score window and widens it on failure.
-                                earlier iterations will improve move ordering for deeper ones.
-                                i also used 
-                                <a href="https://www.chessprogramming.org/Principal_Variation_Search">principal variation search</a>
-                                which allots a full search window for the first move at every point.
-                                the other moves have a null window and get pruned if they don't improve alpha.
-                            </p>
+                        <p>
+                            the search algorithm i used was negamax with alpha-beta pruning with
+                            <a href="https://www.chessprogramming.org/Iterative_Deepening">iterative deepening</a>
+                            and 
+                            <a href="https://www.chessprogramming.org/Aspiration_Windows">aspiration windows</a>.
+                            each iteration will search a narrow score window and widens it on failure.
+                            earlier iterations will improve move ordering for deeper ones.
+                            i also used 
+                            <a href="https://www.chessprogramming.org/Principal_Variation_Search">principal variation search</a>
+                            which allots a full search window for the first move at every point.
+                            the other moves have a null window and get pruned if they don't improve alpha.
+                        </p>
 
-                            <p>
-                                move ordering determines how fast alpha-beta prunes, since a good move ordering can reduce the branching factor.
-                                goldfinger does move ordering with the mvv-lva, killer, and history heuristics.
-                                search results are cached inside a 
-                                <a href="https://www.chessprogramming.org/Transposition_Table">transposition table</a>,
-                                where the board's state is saved with 
-                                <a href="https://www.chessprogramming.org/Zobrist_Hashing">zobrist hashing</a>.
-                                my late move reductions use a log-scaled formula based on depth and move index to search shallower for moves
-                                that scored lower.
-                                finally 
-                                <a href="https://www.chessprogramming.org/Quiescence_Search">quiescence search</a>
-                                is used for the leaf nodes and will continue until the position is quiet.
-                            </p>
-                        </div>
+                        <p>
+                            move ordering determines how fast alpha-beta prunes, since a good move ordering can reduce the branching factor.
+                            goldfinger does move ordering with the mvv-lva, killer, and history heuristics.
+                            search results are cached inside a 
+                            <a href="https://www.chessprogramming.org/Transposition_Table">transposition table</a>,
+                            where the board's state is saved with 
+                            <a href="https://www.chessprogramming.org/Zobrist_Hashing">zobrist hashing</a>.
+                            my late move reductions use a log-scaled formula based on depth and move index to search shallower for moves
+                            that scored lower.
+                            finally 
+                            <a href="https://www.chessprogramming.org/Quiescence_Search">quiescence search</a>
+                            is used for the leaf nodes and will continue until the position is quiet.
+                        </p>
                     </div>
                 </div>
                 <button class="read-more">read more</button>
@@ -105,79 +103,77 @@
                     a graphics engine written in rust: shading, textures, and custom scripting lang.
                 </p>
                 <div class="project-body">
-                    <div class="project-body-inner">
-                        <div class="project-content">
-                            <p>
-                                rustic is driven by
-                                <a href="https://github.com/danielwzyang/rustic/tree/main/scripts">mdl</a>,
-                                a scripting language created by
-                                <a href="https://www.stuycs.org/faculty/">mr. dw</a>
-                                that i wrote a handmade interpreter for.
-                                the lexer tokenizes the input with regex, the parser builds a command list from the token stream,
-                                and the evaluator runs those commands against a scene context.
-                            </p>
+                    <div class="project-content">
+                        <p>
+                            rustic is driven by
+                            <a href="https://github.com/danielwzyang/rustic/tree/main/scripts">mdl</a>,
+                            a scripting language created by
+                            <a href="https://www.stuycs.org/faculty/">mr. dw</a>
+                            that i wrote a handmade interpreter for.
+                            the lexer tokenizes the input with regex, the parser builds a command list from the token stream,
+                            and the evaluator runs those commands against a scene context.
+                        </p>
 
-                            <figure>
-                                <img src="../assets/rustic/mdl.webp" alt="example mdl code" loading="lazy">
-                                <figcaption>sneak peek at a spinning james bond ~ scroll down!</figcaption>
-                            </figure>
+                        <figure>
+                            <img src="../assets/rustic/mdl.webp" alt="example mdl code" loading="lazy">
+                            <figcaption>sneak peek at a spinning james bond ~ scroll down!</figcaption>
+                        </figure>
 
-                            <p>
-                                lines are the first step to any graphics engine.
-                                rustic draws them using
-                                <a href="https://en.wikipedia.org/wiki/Bresenham's_line_algorithm">bresenham's line algorithm</a>,
-                                then uses them to fill in triangles with 
-                                <a href="https://en.wikipedia.org/wiki/Scanline_rendering">scan-line rendering</a>.
-                                triangles form the basis of every 3d object that's rendered.
-                                even spheres and tori can be made with triangles; more triangles = a rounder surface.
-                                <a href="https://en.wikipedia.org/wiki/Back-face_culling">back-face culling</a>
-                                and a 
-                                <a href="https://en.wikipedia.org/wiki/Z-buffering">z-buffer</a>
-                                prevent drawing unseen surfaces.
-                                rustic can shade these triangles using
-                                <a href="https://en.wikipedia.org/wiki/Computer_graphics_lighting#Flat_shading">flat shading</a>,
-                                <a href="https://en.wikipedia.org/wiki/Gouraud_shading">gouraud shading</a>, or
-                                <a href="https://en.wikipedia.org/wiki/Phong_reflection_model">phong shading</a>,
-                                which is controlled by changing the lighting constants.
-                            </p>
+                        <p>
+                            lines are the first step to any graphics engine.
+                            rustic draws them using
+                            <a href="https://en.wikipedia.org/wiki/Bresenham's_line_algorithm">bresenham's line algorithm</a>,
+                            then uses them to fill in triangles with 
+                            <a href="https://en.wikipedia.org/wiki/Scanline_rendering">scan-line rendering</a>.
+                            triangles form the basis of every 3d object that's rendered.
+                            even spheres and tori can be made with triangles; more triangles = a rounder surface.
+                            <a href="https://en.wikipedia.org/wiki/Back-face_culling">back-face culling</a>
+                            and a 
+                            <a href="https://en.wikipedia.org/wiki/Z-buffering">z-buffer</a>
+                            prevent drawing unseen surfaces.
+                            rustic can shade these triangles using
+                            <a href="https://en.wikipedia.org/wiki/Computer_graphics_lighting#Flat_shading">flat shading</a>,
+                            <a href="https://en.wikipedia.org/wiki/Gouraud_shading">gouraud shading</a>, or
+                            <a href="https://en.wikipedia.org/wiki/Phong_reflection_model">phong shading</a>,
+                            which is controlled by changing the lighting constants.
+                        </p>
 
-                            <figure>
-                                <img src="../assets/rustic/shading.webp" alt="different shading models" loading="lazy">
-                                <figcaption>
-                                    <a href="https://github.com/danielwzyang/rustic/blob/main/scripts/shading_models.mdl">shading.mdl</a>:
-                                    wireframe, flat, gouraud, and phong shading 
-                                </figcaption>
-                            </figure>
+                        <figure>
+                            <img src="../assets/rustic/shading.webp" alt="different shading models" loading="lazy">
+                            <figcaption>
+                                <a href="https://github.com/danielwzyang/rustic/blob/main/scripts/shading_models.mdl">shading.mdl</a>:
+                                wireframe, flat, gouraud, and phong shading 
+                            </figcaption>
+                        </figure>
 
-                            <p>
-                                objects are moved, scaled, and rotated using 
-                                <a href="https://en.wikipedia.org/wiki/Transformation_matrix">transformation matrices</a>
-                                on a stack controlled by push and pop operations.
-                                these transformations can be animated using a knob system.
-                                knobs hold values that change with time and act as multipliers for the transformations.
-                                there's 
-                                <a href="https://en.wikipedia.org/wiki/Inbetweening">keyframe interpolation</a>,
-                                easing, and gif exports.
-                            </p>
+                        <p>
+                            objects are moved, scaled, and rotated using 
+                            <a href="https://en.wikipedia.org/wiki/Transformation_matrix">transformation matrices</a>
+                            on a stack controlled by push and pop operations.
+                            these transformations can be animated using a knob system.
+                            knobs hold values that change with time and act as multipliers for the transformations.
+                            there's 
+                            <a href="https://en.wikipedia.org/wiki/Inbetweening">keyframe interpolation</a>,
+                            easing, and gif exports.
+                        </p>
 
-                            <p>
-                                rustic also supports parsing .obj and .stl mesh files.
-                                this means you can render basically any model.
-                                support for .mtl files also allows for textured surfaces using 
-                                <a href="https://en.wikipedia.org/wiki/UV_mapping">uv texture mapping</a>.
-                            </p>
+                        <p>
+                            rustic also supports parsing .obj and .stl mesh files.
+                            this means you can render basically any model.
+                            support for .mtl files also allows for textured surfaces using 
+                            <a href="https://en.wikipedia.org/wiki/UV_mapping">uv texture mapping</a>.
+                        </p>
 
-                            <figure>
-                                <video autoplay loop muted playsinline>
-                                    <source src="../assets/rustic/bond.webm" type="video/webm">
-                                    your browser doesn't support webm :(
-                                </video>
-                                <figcaption>
-                                    <a href="https://github.com/danielwzyang/rustic/blob/main/scripts/bond.mdl">bond.mdl</a>:
-                                    dapper james bond minifigure
-                                </figcaption>
-                            </figure>
-                        </div>
+                        <figure>
+                            <video autoplay loop muted playsinline>
+                                <source src="../assets/rustic/bond.webm" type="video/webm">
+                                your browser doesn't support webm :(
+                            </video>
+                            <figcaption>
+                                <a href="https://github.com/danielwzyang/rustic/blob/main/scripts/bond.mdl">bond.mdl</a>:
+                                dapper james bond minifigure
+                            </figcaption>
+                        </figure>
                     </div>
                 </div>
                 <button class="read-more">read more</button>
@@ -194,16 +190,14 @@
                     attendance dashboard for stuypulse made with astro + supabase: 200+ registered users.
                 </p>
                 <div class="project-body">
-                    <div class="project-body-inner">
-                        <div class="project-content">
-                            content
-                        </div>
+                    <div class="project-content">
+                        content
                     </div>
                 </div>
                 <button class="read-more">read more</button>
             </article>
         </section>
-    </div>
+    </main>
 
     <script>
         document.querySelectorAll(`a[href^="http"]`).forEach(a => {

@@ -18,12 +18,12 @@
 </head>
 
 <body>
-    <main class="hero">
+    <main>
         <h1 class="name">daniel yang</h1>
 
         <div class="links-container">
             <div class="links">
-                <a href="https://github.com/danielwzyang" target="_blank" rel="noopener noreferrer">github</a>
+                <a href="https://github.com/danielwzyang">github</a>
                 <a href="mailto:daniel.yang@cooper.edu">email</a>
                 <!-- <a href="/projects">projects</a> -->
             </div>
@@ -31,6 +31,13 @@
             <p class="subtitle">stuy '26 | cooper '30</p>
         </div>
     </main>
+
+    <script>
+        document.querySelectorAll(`a[href^="http"]`).forEach(a => {
+            a.target = "_blank"
+            a.rel = "noopener noreferrer"
+        })
+    </script>
 </body>
 
 </html>

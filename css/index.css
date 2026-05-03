@@ -6,7 +6,7 @@ body {
     padding: 48px;
 }
 
-.hero {
+main {
     width: 100%;
     max-width: 920px;
     display: flex;
@@ -31,7 +31,35 @@ body {
 }
 
 .links {
+    display: flex;
+    gap: 8px;
+    font-size: 14px;
+    justify-content: center;
     margin: 8px;
+}
+
+.links a {
+    text-decoration: none;
+    color: #000;
+    padding: 8px 10px;
+    font-weight: 600;
+    position: relative;
+}
+
+.links a::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 10px;
+    right: 10px;
+    height: 1px;
+    background: #000;
+    transform: scaleX(0);
+    transition: transform 300ms ease;
+}
+
+.links a:hover::after {
+    transform: scaleX(1);
 }
 
 .subtitle {
@@ -45,6 +73,13 @@ body {
         gap: 6px;
         flex-wrap: wrap;
         font-size: 13px;
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 

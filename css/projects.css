@@ -2,7 +2,7 @@ body {
     padding: 30px;
 }
 
-.content {
+main {
     max-width: 640px;
     margin: 0 auto;
 }
