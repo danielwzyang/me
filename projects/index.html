@@ -32,7 +32,58 @@
                 <div class="project-body">
                     <div class="project-body-inner">
                         <div class="project-content">
-                            content
+                            <p>
+                                a chess engine needs chess. chess needs a board.
+                                my first approach was arrays, but i eventually found out about bitboards:
+                                twelve 64 bit integers that each represent a unique piece type e.g. black knight.
+                                each bit is a square in the 8x8 board and flipping it adds and removes a piece at that square.
+                                they also happened to be
+                                <a href="https://www.chessprogramming.org/Magic_Bitboards" 
+                                    target="_blank" rel="noopener noreferrer">magic bitboards</a>,
+                                which means that the moves for sliding pieces like bishops and rooks are precalculated as bitmasks.
+                            </p>
+
+                            <p>
+                                goldfinger uses
+                                <a href="https://www.chessprogramming.org/PeSTO%27s_Evaluation_Function"
+                                   target="_blank" rel="noopener noreferrer">PeSTO's eval</a>,
+                                which scores each piece based on its position using piece-square tables.
+                                there are two tables for each piece (midgame + endgame) that get tapered as the game progresses.
+                                this is simple, but effective.
+                            </p>
+
+                            <p>
+                                the search algorithm i used was negamax with alpha-beta pruning with
+                                <a href="https://www.chessprogramming.org/Iterative_Deepening"
+                                   target="_blank" rel="noopener noreferrer">iterative deepening</a>
+                                and 
+                                <a href="https://www.chessprogramming.org/Aspiration_Windows"
+                                   target="_blank" rel="noopener noreferrer">aspiration windows</a>.
+                                each iteration will search a narrow score window and widens it on failure.
+                                earlier iterations will improve move ordering for deeper ones.
+                                i also used 
+                                <a href="https://www.chessprogramming.org/Principal_Variation_Search"
+                                   target="_blank" rel="noopener noreferrer">principal variation search</a>
+                                which allots a full search window for the first move at every point.
+                                the other moves have a null window and get pruned if they don't improve alpha.
+                            </p>
+
+                            <p>
+                                move ordering determines how fast alpha-beta prunes, since a good move ordering can reduce the branching factor.
+                                goldfinger does move ordering with the mvv-lva, killer, and history heuristics.
+                                search results are cached inside a 
+                                <a href="https://www.chessprogramming.org/Transposition_Table"
+                                   target="_blank" rel="noopener noreferrer">transposition table</a>,
+                                where the board's state is saved with 
+                                <a href="https://www.chessprogramming.org/Zobrist_Hashing"
+                                   target="_blank" rel="noopener noreferrer">zobrist hashing</a>.
+                                my late move reductions use a log-scaled formula based on depth and move index to search shallower for moves
+                                that scored lower.
+                                finally 
+                                <a href="https://www.chessprogramming.org/Quiescence_Search"
+                                   target="_blank" rel="noopener noreferrer">quiescence search</a>
+                                   is used for the leaf nodes and will continue until the position is quiet.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -79,15 +130,18 @@
                 <button class="read-more">read more</button>
             </article>
 
+            <!--
+            project template
+
             <article class="project">
                 <h2 class="project-title">
-                    <a href="https://github.com/danielwzyang/digtokorea" target="_blank" rel="noopener noreferrer">
-                        dig to korea
+                    <a href="https://github.com/danielwzyang/my.stuypulse.com" target="_blank" rel="noopener noreferrer">
+                        mypulse
                     </a>
                     <span>2025</span>
                 </h2>
                 <p class="project-desc">
-                    remake of dig to china for ap cs with a friend: java + processing. 
+                    attendance dashboard for stuypulse: astro + supabase, 200+ registered users.
                 </p>
                 <div class="project-body">
                     <div class="project-body-inner">
@@ -98,7 +152,7 @@
                 </div>
                 <button class="read-more">read more</button>
             </article>
-
+            -->
         </section>
     </div>
 
