@@ -17,22 +17,6 @@ body {
     position: relative;
 }
 
-.back::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: #000;
-    transform: scaleX(0);
-    transition: transform 300ms ease;
-}
-
-.back:hover::after {
-    transform: scaleX(1);
-}
-
 .page-title {
     font-family: "Playfair Display", serif;
     font-size: clamp(28px, 6vw, 40px);
@@ -65,22 +49,6 @@ body {
     position: relative;
 }
 
-.project-title a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: #000;
-    transform: scaleX(0);
-    transition: transform 300ms ease;
-}
-
-.project-title a:hover::after {
-    transform: scaleX(1);
-}
-
 .project-title span {
     font-size: 14px;
     font-weight: 600;
@@ -99,43 +67,17 @@ body {
     border: none;
     cursor: pointer;
     font-family: inherit;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     color: #000;
     padding: 0;
     position: relative;
 }
 
-.read-more::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: #000;
-    transform: scaleX(0);
-    transition: transform 300ms ease;
-}
-
-.read-more:hover::after {
-    transform: scaleX(1);
-}
-
 .project-body {
     overflow: hidden;
     transition: height 1000ms ease;
     position: relative;
-}
-
-.project-body::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 15px;
-    background: linear-gradient(transparent, #fff);
 }
 
 .project-content {
@@ -181,5 +123,25 @@ body {
 
 .project-content figcaption a {
     color: #999;
+}
+
+.back::after,
+.project-title a::after,
+.read-more::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #000;
+    transform: scaleX(0);
+    transition: transform 300ms ease;
+}
+
+.back:hover::after,
+.project-title a:hover::after,
+.read-more:hover::after {
+    transform: scaleX(1);
 }
 

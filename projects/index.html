@@ -20,7 +20,7 @@
         <section class="projects">
             <article class="project">
                 <h2 class="project-title">
-                    <a href="https://github.com/danielwzyang/goldfinger" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/danielwzyang/goldfinger">
                         goldfinger
                     </a>
                     <span>2025</span>
@@ -38,15 +38,13 @@
                                 6 piece types * 2 colors = 12 integers.
                                 each bit is a square in the 8x8 board and flipping it adds and removes a piece at that square.
                                 they also happened to be
-                                <a href="https://www.chessprogramming.org/Magic_Bitboards" 
-                                    target="_blank" rel="noopener noreferrer">magic bitboards</a>,
+                                <a href="https://www.chessprogramming.org/Magic_Bitboards">magic bitboards</a>,
                                 which means that the moves for sliding pieces like bishops and rooks are precalculated as bitmasks.
                             </p>
 
                             <p>
                                 goldfinger uses
-                                <a href="https://www.chessprogramming.org/PeSTO%27s_Evaluation_Function"
-                                    target="_blank" rel="noopener noreferrer">PeSTO's eval</a>,
+                                <a href="https://www.chessprogramming.org/PeSTO%27s_Evaluation_Function">PeSTO's eval</a>,
                                 which scores each piece based on its position using piece-square tables.
                                 there are two tables for each piece (midgame + endgame) that get tapered as the game progresses. 
                                 this is simple, but effective.
@@ -59,16 +57,13 @@
 
                             <p>
                                 the search algorithm i used was negamax with alpha-beta pruning with
-                                <a href="https://www.chessprogramming.org/Iterative_Deepening"
-                                    target="_blank" rel="noopener noreferrer">iterative deepening</a>
+                                <a href="https://www.chessprogramming.org/Iterative_Deepening">iterative deepening</a>
                                 and 
-                                <a href="https://www.chessprogramming.org/Aspiration_Windows"
-                                    target="_blank" rel="noopener noreferrer">aspiration windows</a>.
+                                <a href="https://www.chessprogramming.org/Aspiration_Windows">aspiration windows</a>.
                                 each iteration will search a narrow score window and widens it on failure.
                                 earlier iterations will improve move ordering for deeper ones.
                                 i also used 
-                                <a href="https://www.chessprogramming.org/Principal_Variation_Search"
-                                    target="_blank" rel="noopener noreferrer">principal variation search</a>
+                                <a href="https://www.chessprogramming.org/Principal_Variation_Search">principal variation search</a>
                                 which allots a full search window for the first move at every point.
                                 the other moves have a null window and get pruned if they don't improve alpha.
                             </p>
@@ -77,16 +72,13 @@
                                 move ordering determines how fast alpha-beta prunes, since a good move ordering can reduce the branching factor.
                                 goldfinger does move ordering with the mvv-lva, killer, and history heuristics.
                                 search results are cached inside a 
-                                <a href="https://www.chessprogramming.org/Transposition_Table"
-                                    target="_blank" rel="noopener noreferrer">transposition table</a>,
+                                <a href="https://www.chessprogramming.org/Transposition_Table">transposition table</a>,
                                 where the board's state is saved with 
-                                <a href="https://www.chessprogramming.org/Zobrist_Hashing"
-                                    target="_blank" rel="noopener noreferrer">zobrist hashing</a>.
+                                <a href="https://www.chessprogramming.org/Zobrist_Hashing">zobrist hashing</a>.
                                 my late move reductions use a log-scaled formula based on depth and move index to search shallower for moves
                                 that scored lower.
                                 finally 
-                                <a href="https://www.chessprogramming.org/Quiescence_Search"
-                                    target="_blank" rel="noopener noreferrer">quiescence search</a>
+                                <a href="https://www.chessprogramming.org/Quiescence_Search">quiescence search</a>
                                 is used for the leaf nodes and will continue until the position is quiet.
                             </p>
                         </div>
@@ -97,7 +89,7 @@
 
             <article class="project">
                 <h2 class="project-title">
-                    <a href="https://github.com/danielwzyang/rustic" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/danielwzyang/rustic">
                         rustic
                     </a>
                     <span>2025</span>
@@ -110,11 +102,9 @@
                         <div class="project-content">
                             <p>
                                 rustic is driven by
-                                <a href="https://github.com/danielwzyang/rustic/tree/main/scripts"
-                                    target="_blank" rel="noopener noreferrer">mdl</a>,
+                                <a href="https://github.com/danielwzyang/rustic/tree/main/scripts">mdl</a>,
                                 a scripting language created by
-                                <a href="https://www.stuycs.org/faculty/"
-                                    target="_blank" rel="noopener noreferrer">mr. dw</a>
+                                <a href="https://www.stuycs.org/faculty/">mr. dw</a>
                                 that i wrote a handmade interpreter for.
                                 the lexer tokenizes the input with regex, the parser builds a command list from the token stream,
                                 and the evaluator runs those commands against a scene context.
@@ -128,63 +118,51 @@
                             <p>
                                 lines are the first step to any graphics engine.
                                 rustic draws them using
-                                <a href="https://en.wikipedia.org/wiki/Bresenham's_line_algorithm"
-                                    target="_blank" rel="noopener noreferrer">bresenham's line algorithm</a>,
+                                <a href="https://en.wikipedia.org/wiki/Bresenham's_line_algorithm">bresenham's line algorithm</a>,
                                 then uses them to fill in triangles with 
-                                <a href="https://en.wikipedia.org/wiki/Scanline_rendering"
-                                    target="_blank" rel="noopener noreferrer">scan-line rendering</a>.
+                                <a href="https://en.wikipedia.org/wiki/Scanline_rendering">scan-line rendering</a>.
                                 triangles form the basis of every 3d object that's rendered.
-                                even spheres and tori can be made with triangles: more triangles = a rounder surface.
-                                <a href="https://en.wikipedia.org/wiki/Back-face_culling"
-                                    target="_blank" rel="noopener noreferrer">back-face culling</a>
+                                even spheres and tori can be made with triangles; more triangles = a rounder surface.
+                                <a href="https://en.wikipedia.org/wiki/Back-face_culling">back-face culling</a>
                                 and a 
-                                <a href="https://en.wikipedia.org/wiki/Z-buffering"
-                                    target="_blank" rel="noopener noreferrer">z-buffer</a>
+                                <a href="https://en.wikipedia.org/wiki/Z-buffering">z-buffer</a>
                                 prevent drawing unseen surfaces.
                                 rustic can shade these triangles using
-                                <a href="https://en.wikipedia.org/wiki/Computer_graphics_lighting#Flat_shading"
-                                    target="_blank" rel="noopener noreferrer">flat shading</a>,
-                                <a href="https://en.wikipedia.org/wiki/Gouraud_shading"
-                                    target="_blank" rel="noopener noreferrer">gouraud shading</a>, or
-                                <a href="https://en.wikipedia.org/wiki/Phong_reflection_model"
-                                    target="_blank" rel="noopener noreferrer">phong shading</a>,
+                                <a href="https://en.wikipedia.org/wiki/Computer_graphics_lighting#Flat_shading">flat shading</a>,
+                                <a href="https://en.wikipedia.org/wiki/Gouraud_shading">gouraud shading</a>, or
+                                <a href="https://en.wikipedia.org/wiki/Phong_reflection_model">phong shading</a>,
                                 which is controlled by changing the lighting constants.
                             </p>
 
                             <figure>
                                 <img src="../assets/rustic/shading.png" alt="different shading models">
                                 <figcaption>wireframe, flat, gouraud, and phong shading ~ 
-                                <a href="https://github.com/danielwzyang/rustic/blob/main/scripts/shading_models.mdl"
-                                    target="_blank" rel="noopener noreferrer">shading.mdl</a>
+                                <a href="https://github.com/danielwzyang/rustic/blob/main/scripts/shading_models.mdl">shading.mdl</a>
                                 </figcaption>
                             </figure>
 
                             <p>
                                 objects are moved, scaled, and rotated using 
-                                <a href="https://en.wikipedia.org/wiki/Transformation_matrix"
-                                    target="_blank" rel="noopener noreferrer">transformation matrices</a>
+                                <a href="https://en.wikipedia.org/wiki/Transformation_matrix">transformation matrices</a>
                                 on a stack controlled by push and pop operations.
                                 these transformations can be animated using a knob system.
                                 knobs hold values that change with time and act as multipliers for the transformations.
                                 there's 
-                                <a href="https://en.wikipedia.org/wiki/Inbetweening"
-                                    target="_blank" rel="noopener noreferrer">keyframe interpolation</a>,
+                                <a href="https://en.wikipedia.org/wiki/Inbetweening">keyframe interpolation</a>,
                                 easing, and gif exports.
                             </p>
 
                             <p>
-                                rustic also supports parsing .obj and .stl mesh files, commonly used for 3d printing.
+                                rustic also supports parsing .obj and .stl mesh files.
                                 this means you can render basically any model.
                                 support for .mtl files also allows for textured surfaces using 
-                                <a href="https://en.wikipedia.org/wiki/UV_mapping"
-                                    target="_blank" rel="noopener noreferrer">uv texture mapping</a>.
+                                <a href="https://en.wikipedia.org/wiki/UV_mapping">uv texture mapping</a>.
                             </p>
 
                             <figure>
                                 <img src="../assets/rustic/bond.gif" alt="james bond spinning">
                                 <figcaption>dapper james bond minifigure ~
-                                <a href="https://github.com/danielwzyang/rustic/blob/main/scripts/bond.mdl"
-                                    target="_blank" rel="noopener noreferrer">bond.mdl</a>
+                                <a href="https://github.com/danielwzyang/rustic/blob/main/scripts/bond.mdl">bond.mdl</a>
                                 </figcaption>
                             </figure>
                         </div>
@@ -195,7 +173,7 @@
 
             <article class="project">
                 <h2 class="project-title">
-                    <a href="https://github.com/danielwzyang/my.stuypulse.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/danielwzyang/my.stuypulse.com">
                         mypulse
                     </a>
                     <span>2025</span>
@@ -212,33 +190,15 @@
                 </div>
                 <button class="read-more">read more</button>
             </article>
-            <!--
-            project template
-
-            <article class="project">
-                <h2 class="project-title">
-                    <a href="https://github.com/danielwzyang/my.stuypulse.com" target="_blank" rel="noopener noreferrer">
-                        mypulse
-                    </a>
-                    <span>2025</span>
-                </h2>
-                <p class="project-desc">
-                    attendance dashboard for stuypulse: astro + supabase, 200+ registered users.
-                </p>
-                <div class="project-body">
-                    <div class="project-body-inner">
-                        <div class="project-content">
-                            content
-                        </div>
-                    </div>
-                </div>
-                <button class="read-more">read more</button>
-            </article>
-            -->
         </section>
     </div>
 
     <script>
+        document.querySelectorAll(`a[href^="http"]`).forEach(a => {
+            a.target = "_blank"
+            a.rel = "noopener noreferrer"
+        })
+
         const projects = document.querySelectorAll(".project")
 
         projects.forEach(project => {
@@ -251,10 +211,23 @@
                 const open = project.classList.contains("open")
 
                 if (open) {
+                    const startY = window.scrollY
+                    const startHeight = body.offsetHeight
+
+                    const observer = new ResizeObserver(() => {
+                        const delta = startHeight - body.offsetHeight
+                        window.scrollTo({ top: startY - delta, behavior: "instant" })
+                    })
+
+                    observer.observe(body)
                     body.style.height = body.scrollHeight + "px"
                     requestAnimationFrame(() => {
                         body.style.height = "0"
                     })
+
+                    body.addEventListener("transitionend", () => {
+                        observer.disconnect()
+                    }, { once: true })
                 } else {
                     body.style.height = body.scrollHeight + "px"
                 }
