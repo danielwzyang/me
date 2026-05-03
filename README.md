@@ -1,3 +1,8 @@
-note that the frontend/css is done using claude.ai
+# danielyang.cc
 
-content written by me
+hello this is me.
+
+note that some javascript / css for the frontend was written using ai.
+
+the content, including that in /projects, is all written by me.
+
