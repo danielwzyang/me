@@ -80,6 +80,17 @@ main {
     position: relative;
 }
 
+.project-body::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(transparent, #fff);
+    pointer-events: none;
+}
+
 .project-content {
     padding-bottom: 10px;
     font-size: 14px;
