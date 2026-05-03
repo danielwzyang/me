@@ -34,7 +34,8 @@
                             <p>
                                 a chess engine needs chess. chess needs a board.
                                 my first approach was arrays, but i eventually found out about bitboards:
-                                twelve 64 bit integers that each represent a unique piece type e.g. black knight.
+                                twelve 64 bit integers that each represent a unique piece.
+                                6 piece types * 2 colors = 12 integers.
                                 each bit is a square in the 8x8 board and flipping it adds and removes a piece at that square.
                                 they also happened to be
                                 <a href="https://www.chessprogramming.org/Magic_Bitboards" 
@@ -47,7 +48,7 @@
                                 <a href="https://www.chessprogramming.org/PeSTO%27s_Evaluation_Function"
                                    target="_blank" rel="noopener noreferrer">PeSTO's eval</a>,
                                 which scores each piece based on its position using piece-square tables.
-                                there are two tables for each piece (midgame + endgame) that get tapered as the game progresses.
+                                there are two tables for each piece (midgame + endgame) that get tapered as the game progresses. 
                                 this is simple, but effective.
                             </p>
 
@@ -107,7 +108,74 @@
                 <div class="project-body">
                     <div class="project-body-inner">
                         <div class="project-content">
+                            <p>
+                                rustic is driven by
+                                <a href="https://github.com/danielwzyang/rustic/tree/main/scripts"
+                                   target="_blank" rel="noopener noreferrer">mdl</a>,
+                                a scripting language created by
+                                <a href="https://www.stuycs.org/faculty/"
+                                   target="_blank" rel="noopener noreferrer">mr. dw</a>
+                                that i wrote a handmade interpreter for.
+                                the lexer tokenizes the input with regex, the parser builds a command list from the token stream,
+                                and the evaluator runs those commands against a scene context.
+                            </p>
 
+                            <p>
+                                every graphics engine starts with lines.
+                                basically everything that gets rendered needs to draw lines.
+                                to do this, rustic uses
+                                <a href="https://en.wikipedia.org/wiki/Bresenham's_line_algorithm"
+                                   target="_blank" rel="noopener noreferrer">bresenham's line algorithm</a>.
+                            </p>
+
+                            <p>
+                                with lines, rustic can draw triangles using
+                                <a href="https://en.wikipedia.org/wiki/Scanline_rendering"
+                                   target="_blank" rel="noopener noreferrer">scan-line rendering</a>.
+                                triangles form the basis of every 3d object that's rendered.
+                                even spheres and tori can be made with triangles; more triangles = a rounder surface.
+                                <a href="https://en.wikipedia.org/wiki/Back-face_culling"
+                                   target="_blank" rel="noopener noreferrer">back-face culling</a>
+                                and a 
+                                <a href="https://en.wikipedia.org/wiki/Z-buffering"
+                                   target="_blank" rel="noopener noreferrer">z-buffer</a>
+                                prevent drawing unseen surfaces.
+                            </p>
+
+                            <p>
+                                rustic can shade these triangles using
+                                <a href="https://en.wikipedia.org/wiki/Computer_graphics_lighting#Flat_shading"
+                                   target="_blank" rel="noopener noreferrer">flat shading</a>,
+                                <a href="https://en.wikipedia.org/wiki/Gouraud_shading"
+                                   target="_blank" rel="noopener noreferrer">gouraud shading</a>, or
+                                <a href="https://en.wikipedia.org/wiki/Phong_reflection_model"
+                                   target="_blank" rel="noopener noreferrer">phong shading</a>,
+                                which is controlled by changing the lighting constants.
+                            </p>
+
+                            <p>
+                                objects are transformed using matrices applied to a set of points to move, scale, and rotate them.
+                                rustic keeps the 
+                                <a href="https://en.wikipedia.org/wiki/Transformation_matrix"
+                                   target="_blank" rel="noopener noreferrer">transformation matrices</a>
+                                on a stack with push and pop operations.
+                            </p>
+
+                            <p>
+                                these transformations can be animated using a knob system.
+                                knobs hold values that change with time and act as multipliers for the transformations.
+                                there's 
+                                <a href="https://en.wikipedia.org/wiki/Inbetweening"
+                                   target="_blank" rel="noopener noreferrer">keyframe interpolation</a>,
+                                easing, and gif exports.
+                            </p>
+
+                            <p>
+                                rustic also supports parsing .obj and .stl mesh files, commonly used for 3d printing.
+                                it also supports .mtl files for
+                                <a href="https://en.wikipedia.org/wiki/UV_mapping"
+                                   target="_blank" rel="noopener noreferrer">uv texture mapping</a>.
+                            </p>
                         </div>
                     </div>
                 </div>

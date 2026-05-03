@@ -125,7 +125,7 @@ body {
 .project-body {
     display: grid;
     grid-template-rows: 0fr;
-    transition: grid-template-rows 400ms ease;
+    transition: grid-template-rows 1000ms ease;
 }
 
 .project.open .project-body {
@@ -141,6 +141,10 @@ body {
     font-size: 14px;
     line-height: 1.75;
     color: #333;
+}
+
+.project-content a {
+    color: #663399;
 }
 
 .project-content p + p {
