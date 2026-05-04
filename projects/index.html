@@ -220,7 +220,7 @@
                         </p>
 
                         <figure>
-                            <video autoplay loop muted playsinline>
+                            <video loop muted playsinline preload="none">
                                 <source src="../assets/goldfinger/self.webm" type="video/webm">
                                 your browser doesn't support webm :(
                             </video>
@@ -331,7 +331,7 @@
                         </p>
 
                         <figure>
-                            <video autoplay loop muted playsinline>
+                            <video loop muted playsinline preload="none">
                                 <source src="../assets/rustic/bond.webm" type="video/webm">
                                 your browser doesn't support webm :(
                             </video>
@@ -378,7 +378,6 @@
             const button = project.querySelector(".read-more")
 
             body.style.height = "0"
-            project.querySelectorAll("video").forEach(v => v.pause())
 
             button.addEventListener("click", () => {
                 const open = project.classList.contains("open")
