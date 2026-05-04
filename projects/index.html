@@ -378,6 +378,7 @@
             const button = project.querySelector(".read-more")
 
             body.style.height = "0"
+            project.querySelectorAll("video").forEach(v => v.pause())
 
             button.addEventListener("click", () => {
                 const open = project.classList.contains("open")
