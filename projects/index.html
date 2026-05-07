@@ -207,7 +207,7 @@
                     <span>2025</span>
                 </h2>
                 <p class="project-desc">
-                    a chess engine written in go: peaked ~2000 elo on lichess.
+                    a chess engine written in go that peaked at ~2000 lichess elo.
                 </p>
                 <div class="project-body">
                     <div class="project-content">
@@ -217,9 +217,9 @@
                             twelve 64 bit integers that each represent a unique piece.
                             6 piece types * 2 colors = 12 integers.
                             each bit is a square in the 8x8 board and flipping it adds and removes a piece at that square.
-                            they also happened to be
+                            the move generation for sliding pieces like bishops and rooks used 
                             <a href="https://www.chessprogramming.org/Magic_Bitboards">magic bitboards</a>,
-                            which means that the moves for sliding pieces like bishops and rooks are precalculated as bitmasks.
+                            which means that all their moves are precomputed using bitmasks.
                         </p>
 
                         <p>
@@ -243,26 +243,26 @@
                             <a href="https://www.chessprogramming.org/Iterative_Deepening">iterative deepening</a>
                             and 
                             <a href="https://www.chessprogramming.org/Aspiration_Windows">aspiration windows</a>.
-                            each iteration will search a narrow score window and widens it on failure.
+                            each iteration searches a narrow score window and widens it on failure.
                             earlier iterations will improve move ordering for deeper ones.
                             i also used 
                             <a href="https://www.chessprogramming.org/Principal_Variation_Search">principal variation search</a>
-                            which allots a full search window for the first move at every point.
-                            the other moves have a null window and get pruned if they don't improve alpha.
+                            which uses a full search window for the first move at every point.
+                            the remaining moves are searched with a null window and pruned if they don't improve alpha.
                         </p>
 
                         <p>
-                            move ordering determines how fast alpha-beta prunes, since a good move ordering can reduce the branching factor.
+                            move ordering heavily affects how fast alpha-beta prunes, since a good move ordering can reduce the branching factor.
                             goldfinger does move ordering with the mvv-lva, killer, and history heuristics.
                             search results are cached inside a 
                             <a href="https://www.chessprogramming.org/Transposition_Table">transposition table</a>,
                             where the board's state is saved with 
                             <a href="https://www.chessprogramming.org/Zobrist_Hashing">zobrist hashing</a>.
-                            my late move reductions use a log-scaled formula based on depth and move index to search shallower for moves
-                            that scored lower.
+                            my late move reductions use a log-scaled formula based on depth and move index to 
+                            reduce search depth for less promising moves.
                             finally 
                             <a href="https://www.chessprogramming.org/Quiescence_Search">quiescence search</a>
-                            is used for the leaf nodes and will continue until the position is quiet.
+                            is used for the leaf nodes and will continue searching captures and promotions until the position is quiet.
                         </p>
                     </div>
                 </div>
@@ -277,7 +277,7 @@
                     <span>2025</span>
                 </h2>
                 <p class="project-desc">
-                    a graphics engine written in rust: shading, textures, and custom scripting lang.
+                    a graphics engine written in rust with shading, textures, and a custom scripting language.
                 </p>
                 <div class="project-body">
                     <div class="project-content">
@@ -286,7 +286,7 @@
                             <a href="https://github.com/danielwzyang/rustic/tree/main/scripts">mdl</a>,
                             a scripting language created by
                             <a href="https://www.stuycs.org/faculty/">mr. dw</a>
-                            that i wrote a handmade interpreter for.
+                            which i implemented a handmade interpreter for.
                             the lexer tokenizes the input with regex, the parser builds a command list from the token stream,
                             and the evaluator runs those commands against a scene context.
                         </p>
@@ -297,13 +297,13 @@
                         </figure>
 
                         <p>
-                            lines are the first step to any graphics engine.
+                            rendering lines is the foundation of any graphics engine.
                             rustic draws them using
                             <a href="https://en.wikipedia.org/wiki/Bresenham's_line_algorithm">bresenham's line algorithm</a>,
                             then uses them to fill in triangles with 
                             <a href="https://en.wikipedia.org/wiki/Scanline_rendering">scan-line rendering</a>.
                             triangles form the basis of every 3d object that's rendered.
-                            even spheres and tori can be made with triangles; more triangles = a rounder surface.
+                            even spheres and tori can be made with triangles; more triangles make rounder surface.
                             <a href="https://en.wikipedia.org/wiki/Back-face_culling">back-face culling</a>
                             and a 
                             <a href="https://en.wikipedia.org/wiki/Z-buffering">z-buffer</a>
@@ -329,14 +329,13 @@
                             on a stack controlled by push and pop operations.
                             these transformations can be animated using a knob system.
                             knobs hold values that change with time and act as multipliers for the transformations.
-                            there's 
+                            the animation system also supports
                             <a href="https://en.wikipedia.org/wiki/Inbetweening">keyframe interpolation</a>,
                             easing, and gif exports.
                         </p>
 
                         <p>
-                            rustic also supports parsing .obj and .stl mesh files.
-                            this means you can render basically any model.
+                            rustic also supports parsing .obj and .stl mesh files allowing arbitrary 3d models to be rendered.
                             support for .mtl files also allows for textured surfaces using 
                             <a href="https://en.wikipedia.org/wiki/UV_mapping">uv texture mapping</a>.
                         </p>
@@ -364,7 +363,7 @@
                     <span>2025</span>
                 </h2>
                 <p class="project-desc">
-                    attendance dashboard for stuypulse made with astro + supabase: 200+ registered users.
+                    attendance dashboard for stuypulse made with astro + supabase with 200+ registered users.
                 </p>
                 <div class="project-body">
                     <div class="project-content">
