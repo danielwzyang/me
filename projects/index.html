@@ -367,7 +367,64 @@
                 </p>
                 <div class="project-body">
                     <div class="project-content">
-                        content
+                        <p>
+                            mypulse was my first full-stack product that people actually used.
+                            it was a solution to a simple problem.
+                            that year, one of our mentors made a kiosk in the lab that you would scan in and out
+                            using your student id card.
+                            it would read your 9 digit id and save it in a database locally.
+                            the only way to get that data was through the mentor himself,
+                            and people were curious about their stats.
+                        </p>
+
+                        <p>
+                            i knew i needed a database endpoint so i used
+                            <a href="https://supabase.com/">supabase</a>
+                            because it was free and i had used it in the past
+                            for another 
+                            <a href="https://epsilon.stuysu.org/">club</a>
+                            in stuy.
+                            i also wanted something that could call the apis server side but next seemed overkill.
+                            i ended up picking 
+                            <a href="https://astro.build/">astro</a>
+                            because it was lightweight and simple while still providing that server side functionality.
+                        </p>
+
+                        <p>
+                            in the database, i have two tables.
+                            one for attendance where every student and their stats are stored,
+                            and one for meetings where every meeting and its attendees are stored.
+                            normal stuypulse members can see their own attendance stats while
+                            anyone with admin access can view the admin dashboard to see overall meeting stats.
+                            the database can also be pulled into google sheets using google's app scripts feature,
+                            which allows for master attendance lists to be built in sheets automatically.
+                        </p>
+
+                        <figure>
+                            <img src="../assets/mypulse/user.webp" alt="user dashboard" loading="lazy" width="400" height="348">
+                            <figcaption>
+                                user dashboard for
+                                <a href="https://github.com/alex-wanger">alex wang</a>
+                            </figcaption>
+                        </figure>
+
+                        <p>
+                            i also used supabase for the logins, but it doesn't natively suppport username logins.
+                            to work around this, i stored the users with a dummy email like "123456789@email.com."
+                            while a little silly, it worked for my purposes without needing users to provide valid emails.
+                        </p>
+
+                        <p>
+                            finally, the data itself must be moved from the kiosk to the supabase.
+                            the way i do this is by setting up an endpoint on mypulse that listens for POST requests.
+                            when it receives a request with a special key (albeit plaintext), it will know that the kiosk is sending it.
+                            every hour, the kiosk is set up to send a request with three files:
+                            a meetings report, an attendance report, and a checkins report.
+                            mypulse's endpoint will parse all those files and sync everything to the supabase.
+                            the hourly POST setup was built in collaboration with the mentor behind the kiosk,
+                            who i worked with to configure the pipeline on
+                            <a href="https://github.com/StuyPulse/attendance-kiosk/">his end</a>.
+                        </p>
                     </div>
                 </div>
                 <button class="read-more">read more</button>
