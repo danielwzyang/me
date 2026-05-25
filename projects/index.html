@@ -99,6 +99,7 @@
 
         .project-body {
             overflow: hidden;
+            height: 0;
             transition: height 1000ms ease;
             position: relative;
         }
@@ -443,8 +444,6 @@
         projects.forEach(project => {
             const body = project.querySelector(".project-body")
             const button = project.querySelector(".read-more")
-
-            body.style.height = "0"
 
             button.addEventListener("click", () => {
                 const open = project.classList.contains("open")
