@@ -202,6 +202,80 @@
         <section class="projects">
             <article class="project">
                 <h2 class="project-title">
+                    <a href="https://github.com/danielwzyang/elfontheshelf">
+                        elf on the shelf
+                    </a>
+                    <span>2026</span>
+                </h2>
+                <p class="project-desc">
+                    an elf binary injector made in c and nasm that inserts payloads into executables.
+                </p>
+                <div class="project-body">
+                    <div class="project-content">
+                        <p>
+                            elf on the shelf is a group project i made with my friends for a
+                            cybersecurity final project in our senior year of highschool.
+                            we decided to create a tool that can infect executables, making them
+                            run arbitrary code while still maintaining their original functionality and file size.
+                            the concept is based off of silvio cesare's paper from 1998,
+                            <a href="http://ouah.org/elf-pv.txt">unix elf parasites and viruses</a>.
+                        </p>
+
+                        <p>
+                            executables on linux are stored using the 
+                            <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">elf format</a>.
+                            an elf file is made of different sections, and those sections are
+                            mapped out by a table that the kernel uses to run the executable.
+                            between those sections, there are sometimes gaps of unused bytes.
+                            this is due to an optimization related to
+                            <a href="https://en.wikipedia.org/wiki/Memory_paging">memory paging</a>,
+                            where the program that makes the executable tries to have sections
+                            align with the page boundaries.
+                        </p>
+
+                        <p>
+                            our injector will write into those unused bytes and insert a payload.
+                            after copying the payload's bytes, it will change the entry point of the elf file,
+                            which is where the kernel will start executing instructions.
+                            the new entry point will begin at the start of the payload,
+                            and it will add an instruction to jump back to the original entry point
+                            after the payload is executed.
+                            this will make the payload execute first before going to the original binary.
+                            the relative jump also allows this exploit to work against
+                            <a href="https://en.wikipedia.org/wiki/Position-independent_code">pie binaries</a>.
+                        </p>
+
+                        <p>
+                            the section that i worked on independently was the payloads, 
+                            which were written in x86_64 assembly and compiled into raw shellcode with nasm.
+                            each of the payloads that i wrote have different purposes,
+                            such as opening a bind shell and a reverse shell.
+                            my favorite payload is the download payload, 
+                            which can download and execute any arbitrary file on the internet.
+                        </p>
+
+                        <p>
+                            the injector itself is written in c.
+                            it can parse the file, locate the point of injection, 
+                            calculate the new entry point, and append the relative jump instruction.
+                            the makefile allows users to specify target ips and ports,
+                            use custom payloads, and print debug messages to help find issues.
+                            my two other partners worked on the parsing while i worked on the actual injection itself,
+                            including the entry point calculations and the relative jump.
+                        </p>
+
+                        <p>
+                            to see a compilation of me injecting a bunch of executables on linux, 
+                            watch the end of our 
+                            <a href="https://youtu.be/WQjPLMcLimY?t=730">presentation video</a>.
+                            the rest of the video explains what we did and how.
+                        </p>
+                    </div>
+                </div>
+                <button class="read-more">read more</button>
+            </article>
+            <article class="project">
+                <h2 class="project-title">
                     <a href="https://github.com/danielwzyang/goldfinger">
                         goldfinger
                     </a>
