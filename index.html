@@ -6,14 +6,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="description" content="daniel yang's portfolio." />
     <title>daniel yang</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&display=swap"
-        rel="stylesheet"
-        media="print"
-        onload="this.media='all'"
-    >
     <style>
         *, *::before, *::after {
             box-sizing: border-box;
@@ -22,50 +14,35 @@
         }
 
         body {
-            font-family: "Inter", sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            padding: 48px;
+            font-family: ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono", Consolas, "Liberation Mono", monospace;
+            padding: 48px 30px;
         }
 
         main {
-            width: 100%;
-            max-width: 920px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 48px;
         }
 
         .name {
-            font-family: "Playfair Display", serif;
-            font-size: clamp(36px, 8vw, 60px);
-            font-weight: 700;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 1500ms ease forwards;
-        }
-
-        .links-container {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 1000ms ease 500ms forwards;
+            font-size: clamp(28px, 6vw, 40px);
+            font-weight: 600;
         }
 
         .links {
             display: flex;
             gap: 8px;
             font-size: 14px;
-            justify-content: center;
-            margin: 8px;
+            margin: 10px 0;
         }
 
         .links a {
             text-decoration: none;
             color: #000;
-            padding: 8px 10px;
+            padding: 8px 10px 8px 0;
             font-weight: 600;
             position: relative;
         }
@@ -74,11 +51,12 @@
             content: '';
             position: absolute;
             bottom: 6px;
-            left: 10px;
+            left: 0;
             right: 10px;
             height: 1px;
             background: #000;
             transform: scaleX(0);
+            transform-origin: left;
             transition: transform 300ms ease;
         }
 
@@ -89,7 +67,155 @@
         .subtitle {
             font-size: 14px;
             color: #666;
-            margin: 10px;
+        }
+
+        .project {
+            border-top: 1px solid #eee;
+            padding: 28px 0;
+            position: relative;
+        }
+
+        .project:last-child {
+            border-bottom: 1px solid #eee;
+        }
+
+        .project-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .project-title span {
+            font-size: 13px;
+            font-weight: 600;
+            color: #666;
+        }
+
+        .project-desc {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .project-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .project-github {
+            font-size: 13px;
+            font-weight: 600;
+            color: #000;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .read-more {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            color: #000;
+            padding: 0;
+            position: relative;
+        }
+
+        .project-body {
+            overflow: hidden;
+            height: 0;
+            transition: height 1000ms ease;
+            position: relative;
+        }
+
+        .project-body::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(transparent, #fff);
+            pointer-events: none;
+        }
+
+        .project-content {
+            padding-bottom: 10px;
+            font-size: 13px;
+            line-height: 1.75;
+            color: #333;
+        }
+
+        .project-content a {
+            color: #663399;
+        }
+
+        .project-content p + p {
+            margin-top: 16px;
+        }
+
+        .project-content figure + p {
+            margin-top: 16px;
+        }
+
+        .project-content p + figure {
+            margin-top: 16px;
+        }
+
+        .project-content figure {
+            margin: 0 auto;
+            width: fit-content;
+            text-align: center;
+        }
+
+        .project-content img,
+        .project-content video {
+            width: 100%;
+            max-width: 400px;
+            display: block;
+            height: auto;
+        }
+
+        .project-content figcaption {
+            font-size: 12px;
+            color: #999;
+            margin-top: 6px;
+        }
+
+        .project-content figcaption a {
+            color: #999;
+        }
+
+        .read-more::after,
+        .project-github::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #000;
+            transform: scaleX(0);
+            transition: transform 300ms ease;
+        }
+
+        .read-more::after {
+            transform-origin: left;
+        }
+
+        .project-github::after {
+            transform-origin: right;
+        }
+
+        .read-more:hover::after,
+        .project-github:hover::after {
+            transform: scaleX(1);
         }
 
         @media (max-width: 520px) {
@@ -99,35 +225,369 @@
                 font-size: 13px;
             }
         }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
     </style>
 </head>
 
 <body>
     <main>
-        <h1 class="name">daniel yang</h1>
+        <header>
+            <h1 class="name">daniel yang</h1>
 
-        <div class="links-container">
             <div class="links">
                 <a href="https://github.com/danielwzyang">github</a>
                 <a href="mailto:daniel.yang@cooper.edu">email</a>
-                <a href="/projects">projects</a>
+                <a href="#projects">projects</a>
             </div>
 
-            <p class="subtitle">stuy '26 | cooper '30</p>
-        </div>
+            <p class="subtitle">stuy '26, cs major at cooper.</p>
+        </header>
+
+        <section class="projects" id="projects">
+            <article class="project">
+                <h2 class="project-title">
+                    elf on the shelf
+                    <span>2026</span>
+                </h2>
+                <p class="project-desc">
+                    an elf binary injector made in c and nasm that inserts payloads into executables.
+                </p>
+                <div class="project-body">
+                    <div class="project-content">
+                        <p>
+                            elf on the shelf is a group project i made with my friends for a
+                            cybersecurity final project in our senior year of high school.
+                            we decided to create a tool that can infect executables, making them
+                            run arbitrary code while still maintaining their original functionality and file size.
+                            the concept is based on silvio cesare's paper from 1998,
+                            <a href="http://ouah.org/elf-pv.txt">unix elf parasites and viruses</a>.
+                        </p>
+
+                        <p>
+                            executables on linux are stored using the 
+                            <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">elf format</a>.
+                            an elf file is made of different sections, and those sections are
+                            mapped out by a table that the kernel uses to run the executable.
+                            between those sections, there are sometimes gaps of unused bytes.
+                            this is due to an optimization related to
+                            <a href="https://en.wikipedia.org/wiki/Memory_paging">memory paging</a>,
+                            where the program that makes the executable tries to have sections
+                            align with the page boundaries.
+                        </p>
+
+                        <p>
+                            our injector will write into those unused bytes and insert a payload.
+                            after copying the payload's bytes, it will change the entry point of the elf file,
+                            which is where the kernel will start executing instructions.
+                            the new entry point will begin at the start of the payload,
+                            and it will add an instruction to jump back to the original entry point
+                            after the payload is executed.
+                            this will make the payload execute first before going to the original binary.
+                            the relative jump also allows this exploit to work against
+                            <a href="https://en.wikipedia.org/wiki/Position-independent_code">pie binaries</a>.
+                        </p>
+
+                        <p>
+                            the section that i worked on independently was the payloads, 
+                            which were written in x86_64 assembly and compiled into raw shellcode with nasm.
+                            each of the payloads that i wrote has different purposes,
+                            such as opening a bind shell and a reverse shell.
+                            my favorite payload is the download payload, 
+                            which can download and execute any arbitrary file on the internet.
+                        </p>
+
+                        <p>
+                            the injector itself is written in c.
+                            it can parse the file, locate the point of injection, 
+                            calculate the new entry point, and append the relative jump instruction.
+                            the makefile allows users to specify target ips and ports,
+                            use custom payloads, and print debug messages to help find issues.
+                            my two other partners worked on the parsing while i worked on the actual injection itself,
+                            including the entry point calculations and the relative jump.
+                        </p>
+
+                        <p>
+                            to see a compilation of me injecting a bunch of executables on linux, 
+                            watch the end of our 
+                            <a href="https://youtu.be/WQjPLMcLimY?t=730">presentation video</a>.
+                            the rest of the video explains what we did and how.
+                        </p>
+                    </div>
+                </div>
+                <div class="project-footer">
+                    <button class="read-more">read more</button>
+                    <a class="project-github" href="https://github.com/danielwzyang/elfontheshelf">github</a>
+                </div>
+            </article>
+            <article class="project">
+                <h2 class="project-title">
+                    goldfinger
+                    <span>2025</span>
+                </h2>
+                <p class="project-desc">
+                    a chess engine written in go that peaked at ~2000 lichess elo.
+                </p>
+                <div class="project-body">
+                    <div class="project-content">
+                        <p>
+                            a chess engine needs chess. chess needs a board.
+                            my first approach was arrays, but i eventually found out about bitboards:
+                            twelve 64-bit integers that each represent a unique piece.
+                            6 piece types * 2 colors = 12 integers.
+                            each bit is a square in the 8x8 board and flipping it adds or removes a piece at that square.
+                            the move generation for sliding pieces like bishops and rooks used 
+                            <a href="https://www.chessprogramming.org/Magic_Bitboards">magic bitboards</a>,
+                            which means that all their moves are precomputed using bitmasks.
+                        </p>
+
+                        <p>
+                            goldfinger uses
+                            <a href="https://www.chessprogramming.org/PeSTO%27s_Evaluation_Function">PeSTO's eval</a>,
+                            which scores each piece based on its position using piece-square tables.
+                            there are two tables for each piece (midgame + endgame) that get tapered as the game progresses. 
+                            this is simple, but effective.
+                        </p>
+
+                        <figure>
+                            <video loop muted playsinline preload="none" width="400" height="400">
+                                <source src="assets/goldfinger/self.webm" type="video/webm">
+                                your browser doesn't support webm :(
+                            </video>
+                            <figcaption>playing against itself with 100ms per move &amp; no opening book</figcaption>
+                        </figure>
+
+                        <p>
+                            the search algorithm i used was negamax with alpha-beta pruning with
+                            <a href="https://www.chessprogramming.org/Iterative_Deepening">iterative deepening</a>
+                            and 
+                            <a href="https://www.chessprogramming.org/Aspiration_Windows">aspiration windows</a>.
+                            each iteration searches a narrow score window and widens it on failure.
+                            earlier iterations will improve move ordering for deeper ones.
+                            i also used 
+                            <a href="https://www.chessprogramming.org/Principal_Variation_Search">principal variation search</a>,
+                            which uses a full search window for the first move at every point.
+                            the remaining moves are searched with a null window and pruned if they don't improve alpha.
+                        </p>
+
+                        <p>
+                            move ordering heavily affects how fast alpha-beta prunes, since a good move ordering can reduce the branching factor.
+                            goldfinger does move ordering with the mvv-lva, killer, and history heuristics.
+                            search results are cached inside a 
+                            <a href="https://www.chessprogramming.org/Transposition_Table">transposition table</a>,
+                            where the board's state is saved with 
+                            <a href="https://www.chessprogramming.org/Zobrist_Hashing">zobrist hashing</a>.
+                            my late move reductions use a log-scaled formula based on depth and move index to 
+                            reduce search depth for less promising moves.
+                            finally, 
+                            <a href="https://www.chessprogramming.org/Quiescence_Search">quiescence search</a>
+                            is used for the leaf nodes and will continue searching captures and promotions until the position is quiet.
+                        </p>
+                    </div>
+                </div>
+                <div class="project-footer">
+                    <button class="read-more">read more</button>
+                    <a class="project-github" href="https://github.com/danielwzyang/goldfinger">github</a>
+                </div>
+            </article>
+
+            <article class="project">
+                <h2 class="project-title">
+                    rustic
+                    <span>2025</span>
+                </h2>
+                <p class="project-desc">
+                    a graphics engine written in rust with shading, textures, and a custom scripting language.
+                </p>
+                <div class="project-body">
+                    <div class="project-content">
+                        <p>
+                            rustic is driven by
+                            <a href="https://github.com/danielwzyang/rustic/tree/main/scripts">mdl</a>,
+                            a scripting language created by
+                            <a href="https://www.stuycs.org/faculty/">mr. dw</a>,
+                            which i implemented a handmade interpreter for.
+                            the lexer tokenizes the input with regex, the parser builds a command list from the token stream,
+                            and the evaluator runs those commands against a scene context.
+                        </p>
+
+                        <figure>
+                            <img src="assets/rustic/mdl.webp" alt="example mdl code" loading="lazy" width="400" height="269">
+                            <figcaption>sneak peek at a spinning james bond ~ scroll down!</figcaption>
+                        </figure>
+
+                        <p>
+                            rendering lines is the foundation of any graphics engine.
+                            rustic draws them using
+                            <a href="https://en.wikipedia.org/wiki/Bresenham's_line_algorithm">bresenham's line algorithm</a>,
+                            and then uses them to fill in triangles with 
+                            <a href="https://en.wikipedia.org/wiki/Scanline_rendering">scan-line rendering</a>.
+                            triangles form the basis of every 3d object that's rendered.
+                            even spheres and tori can be made with triangles; more triangles make a rounder surface.
+                            <a href="https://en.wikipedia.org/wiki/Back-face_culling">back-face culling</a>
+                            and a 
+                            <a href="https://en.wikipedia.org/wiki/Z-buffering">z-buffer</a>
+                            prevent drawing unseen surfaces.
+                            rustic can shade these triangles using
+                            <a href="https://en.wikipedia.org/wiki/Computer_graphics_lighting#Flat_shading">flat shading</a>,
+                            <a href="https://en.wikipedia.org/wiki/Gouraud_shading">gouraud shading</a>, or
+                            <a href="https://en.wikipedia.org/wiki/Phong_reflection_model">phong shading</a>,
+                            which is controlled by changing the lighting constants.
+                        </p>
+
+                        <figure>
+                            <img src="assets/rustic/shading.webp" alt="different shading models" loading="lazy" width="400" height="400">
+                            <figcaption>
+                                <a href="https://github.com/danielwzyang/rustic/blob/main/scripts/shading_models.mdl">shading.mdl</a>:
+                                wireframe, flat, gouraud, and phong shading 
+                            </figcaption>
+                        </figure>
+
+                        <p>
+                            objects are moved, scaled, and rotated using 
+                            <a href="https://en.wikipedia.org/wiki/Transformation_matrix">transformation matrices</a>
+                            on a stack controlled by push and pop operations.
+                            these transformations can be animated using a knob system.
+                            knobs hold values that change with time and act as multipliers for the transformations.
+                            the animation system also supports
+                            <a href="https://en.wikipedia.org/wiki/Inbetweening">keyframe interpolation</a>,
+                            easing, and gif exports.
+                        </p>
+
+                        <p>
+                            rustic also supports parsing .obj and .stl mesh files, allowing arbitrary 3d models to be rendered.
+                            support for .mtl files also allows for textured surfaces using 
+                            <a href="https://en.wikipedia.org/wiki/UV_mapping">uv texture mapping</a>.
+                        </p>
+
+                        <figure>
+                            <video loop muted playsinline preload="none" width="400" height="400">
+                                <source src="assets/rustic/bond.webm" type="video/webm">
+                                your browser doesn't support webm :(
+                            </video>
+                            <figcaption>
+                                <a href="https://github.com/danielwzyang/rustic/blob/main/scripts/bond.mdl">bond.mdl</a>:
+                                dapper james bond minifigure
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="project-footer">
+                    <button class="read-more">read more</button>
+                    <a class="project-github" href="https://github.com/danielwzyang/rustic">github</a>
+                </div>
+            </article>
+
+            <article class="project">
+                <h2 class="project-title">
+                    mypulse
+                    <span>2025</span>
+                </h2>
+                <p class="project-desc">
+                    attendance dashboard for stuypulse made with astro + supabase with 200+ registered users.
+                </p>
+                <div class="project-body">
+                    <div class="project-content">
+                        <p>
+                            mypulse was my first full-stack product that people actually used.
+                            it was a solution to a simple problem.
+                            that year, one of our mentors made a kiosk in the lab that you would scan in and out
+                            using your student id card.
+                            it would read your 9-digit id and save it in a database locally.
+                            the only way to get that data was through the mentor himself,
+                            and people were curious about their stats.
+                        </p>
+
+                        <p>
+                            i knew i needed a database endpoint, so i used
+                            <a href="https://supabase.com/">supabase</a>
+                            because it was free and i had used it in the past
+                            for another 
+                            <a href="https://epsilon.stuysu.org/">club</a>
+                            in stuy.
+                            i also wanted something that could call the apis server side, but next seemed overkill.
+                            i ended up picking 
+                            <a href="https://astro.build/">astro</a>
+                            because it was lightweight and simple while still providing that server side functionality.
+                        </p>
+
+                        <figure>
+                            <img src="assets/mypulse/user.webp" alt="user dashboard" loading="lazy" width="400" height="348">
+                            <figcaption>
+                                user dashboard for
+                                <a href="https://github.com/alex-wanger">alex wang</a>
+                            </figcaption>
+                        </figure>
+
+                        <p>
+                            supabase was also helpful for the logins, but it doesn't natively support usernames.
+                            to work around this, i stored the users with a dummy email like "123456789@email.com."
+                            while a little silly, it worked for my purposes without needing users to provide valid emails.
+                        </p>
+
+                        <p>
+                            finally, the data itself must be moved from the kiosk to supabase.
+                            the way i did this was by setting up an endpoint on mypulse that listens for POST requests.
+                            when it receives a request with a special key (albeit plaintext), it will know that the kiosk is sending it.
+                            every hour, the kiosk is set up to send a request with three files:
+                            a meetings report, an attendance report, and a check-ins report.
+                            mypulse's endpoint will parse all those files and sync everything to supabase.
+                            the hourly POST setup was built in collaboration with the mentor behind the kiosk,
+                            who i worked with to configure the pipeline on
+                            <a href="https://github.com/StuyPulse/attendance-kiosk/">his end</a>.
+                            now that the data is online, it can also be pulled into google sheets automatically 
+                            using google's app scripts feature.
+                        </p>
+                    </div>
+                </div>
+                <div class="project-footer">
+                    <button class="read-more">read more</button>
+                    <a class="project-github" href="https://github.com/danielwzyang/my.stuypulse.com">github</a>
+                </div>
+            </article>
+        </section>
     </main>
 
     <script>
         document.querySelectorAll(`a[href^="http"]`).forEach(a => {
             a.target = "_blank"
             a.rel = "noopener noreferrer"
+        })
+
+        const projects = document.querySelectorAll(".project")
+
+        projects.forEach(project => {
+            const body = project.querySelector(".project-body")
+            const button = project.querySelector(".read-more")
+
+            button.addEventListener("click", () => {
+                const open = project.classList.contains("open")
+
+                if (open) {
+                    const startY = window.scrollY
+                    const startHeight = body.offsetHeight
+
+                    const observer = new ResizeObserver(() => {
+                        const delta = startHeight - body.offsetHeight
+                        window.scrollTo({ top: startY - delta, behavior: "instant" })
+                    })
+
+                    observer.observe(body)
+                    body.style.height = body.scrollHeight + "px"
+
+                    requestAnimationFrame(() => requestAnimationFrame(() => body.style.height = "0"))
+
+                    body.addEventListener("transitionend", () => observer.disconnect(), { once: true })
+                } else {
+                    body.style.height = body.scrollHeight + "px"
+                    body.addEventListener("transitionend", () => body.style.height = "auto", { once: true })
+                }
+                
+                project.classList.toggle("open")
+                button.textContent = open ? "read more" : "read less"
+
+                const videos = project.querySelectorAll("video")
+                if (open) videos.forEach(v => v.pause())
+                else videos.forEach(v => v.play())
+            })
         })
     </script>
 </body>
