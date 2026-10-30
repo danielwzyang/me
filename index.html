@@ -245,6 +245,74 @@
         <section class="projects" id="projects">
             <article class="project">
                 <h2 class="project-title">
+                    ulab-hosting
+                    <span>2026</span>
+                </h2>
+                <p class="project-desc">
+                    a setuid c cli tool that manages port reservations for web hosting with caddy.
+                </p>
+                <div class="project-body">
+                    <div class="project-content">
+                        <p>
+                            in my first semester at cooper union, i got a job at a student-run lab called microlab (ulab).
+                            they provide a variety of services for students, including
+                            static websites that get hosted at "ee.cooper.edu/~username/".
+                            however, there wasn't a way for them to host their own web servers.
+                            this was a problem because classes like ece366 (software engineering) require
+                            students to host web servers to be graded as projects.
+                            to fix this issue, i set up a system that lets users reserve their own ports on our hosting vm.
+                            once they run their server on that port, it gets
+                            <a href="https://en.wikipedia.org/wiki/Reverse_proxy">reverse proxied</a>
+                            to a path-based route with their username using
+                            <a href="https://caddyserver.com/">caddy</a>.
+                        </p>
+
+                        <p>
+                            the cli is a
+                            <a href="https://en.wikipedia.org/wiki/Setuid">setuid</a>
+                            root binary written in c that manages individual config files inside of
+                            a designated reservations directory.
+                            every file represents a single reservation.
+                            the file contains the username and the port associated with that reservation.
+                            when caddy runs, the caddyfile imports all of those reservations.
+                            it handles the traffic for each path-based route and forwards it to the hosting vm with the corresponding port.
+                            to stay secure, ulab-hosting fetches usernames using
+                            <a href="https://man7.org/linux/man-pages/man2/getuid.2.html">getuid()</a>
+                            and
+                            <a href="https://man7.org/linux/man-pages/man3/getpwuid.3.html">getpwuid()</a>.
+                        </p>
+
+                        <p>
+                            one issue that comes with a shared cli tool is concurrent usage.
+                            this can lead to race conditions and malformed reservations that will break the server.
+                            to combat this, every instance of ulab-hosting that needs to write in the directory
+                            will acquire an exclusive
+                            <a href="https://man7.org/linux/man-pages/man2/flock.2.html">flock</a>
+                            on the reservations directory.
+                            no other instance can write in the directory until the flock is released.
+                            to prevent broken reservations, files are written to a temp file first before being
+                            <a href="https://en.wikipedia.org/wiki/Atomicity_(database_systems)">published atomically</a>
+                            with
+                            <a href="https://man7.org/linux/man-pages/man2/link.2.html">link()</a>.
+                        </p>
+
+                        <p>
+                            reloading the caddy server is done entirely through systemd.
+                            a "systemd.path" unit watches the reservations directory for changes
+                            and triggers a oneshot service that validates the config before reloading caddy.
+                            this ensures that if a broken reservation were to ever slip through,
+                            the server would stay on the latest valid config.
+                            the unit also rate-limits reloading to prevent abuse.
+                        </p>
+                    </div>
+                </div>
+                <div class="project-footer">
+                    <button class="read-more">read more</button>
+                    <a class="project-github" href="https://github.com/danielwzyang/ulab-hosting">github</a>
+                </div>
+            </article>
+            <article class="project">
+                <h2 class="project-title">
                     elf on the shelf
                     <span>2026</span>
                 </h2>
