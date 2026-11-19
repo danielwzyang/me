@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="description" content="daniel yang's portfolio." />
     <title>daniel yang</title>
+    <script>document.documentElement.classList.add("js")</script>
     <style>
         *, *::before, *::after {
             box-sizing: border-box;
@@ -59,7 +60,8 @@
             transition: transform 300ms ease;
         }
 
-        .links a:hover::after {
+        .links a:hover::after,
+        .links a:focus-visible::after {
             transform: scaleX(1);
         }
 
@@ -70,6 +72,7 @@
         }
 
         .project {
+            scroll-margin-top: 16px;
             border-top: 1px solid #eee;
             padding: 28px 0;
             position: relative;
@@ -129,9 +132,16 @@
 
         .project-body {
             overflow: hidden;
-            height: 0;
             transition: height 1000ms ease;
             position: relative;
+        }
+
+        .js .project-body {
+            height: 0;
+        }
+
+        html:not(.js) .read-more {
+            visibility: hidden;
         }
 
         .project-body::after {
@@ -184,12 +194,12 @@
 
         .project-content figcaption {
             font-size: 12px;
-            color: #999;
+            color: #767676;
             margin-top: 6px;
         }
 
         .project-content figcaption a {
-            color: #999;
+            color: #767676;
         }
 
         .read-more::after,
@@ -214,8 +224,19 @@
         }
 
         .read-more:hover::after,
-        .project-github:hover::after {
+        .project-github:hover::after,
+        .read-more:focus-visible::after,
+        .project-github:focus-visible::after {
             transform: scaleX(1);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .project-body,
+            .links a::after,
+            .read-more::after,
+            .project-github::after {
+                transition: none;
+            }
         }
 
         @media (max-width: 520px) {
@@ -243,7 +264,7 @@
         </header>
 
         <section class="projects" id="projects">
-            <article class="project">
+            <article class="project" id="ulab-hosting">
                 <h2 class="project-title">
                     ulab-hosting
                     <span>2026</span>
@@ -251,7 +272,7 @@
                 <p class="project-desc">
                     a setuid c cli tool that manages port reservations for web hosting with caddy.
                 </p>
-                <div class="project-body">
+                <div class="project-body" id="ulab-hosting-body">
                     <div class="project-content">
                         <p>
                             in my first semester at cooper union, i got a job at a student-run lab called microlab (ulab).
@@ -307,11 +328,11 @@
                     </div>
                 </div>
                 <div class="project-footer">
-                    <button class="read-more">read more</button>
+                    <button class="read-more" aria-expanded="false" aria-controls="ulab-hosting-body">read more</button>
                     <a class="project-github" href="https://github.com/danielwzyang/ulab-hosting">github</a>
                 </div>
             </article>
-            <article class="project">
+            <article class="project" id="elf-on-the-shelf">
                 <h2 class="project-title">
                     elf on the shelf
                     <span>2026</span>
@@ -319,7 +340,7 @@
                 <p class="project-desc">
                     an elf binary injector made in c and nasm that inserts payloads into executables.
                 </p>
-                <div class="project-body">
+                <div class="project-body" id="elf-on-the-shelf-body">
                     <div class="project-content">
                         <p>
                             elf on the shelf is a group project i made with my friends for a
@@ -382,11 +403,11 @@
                     </div>
                 </div>
                 <div class="project-footer">
-                    <button class="read-more">read more</button>
+                    <button class="read-more" aria-expanded="false" aria-controls="elf-on-the-shelf-body">read more</button>
                     <a class="project-github" href="https://github.com/danielwzyang/elfontheshelf">github</a>
                 </div>
             </article>
-            <article class="project">
+            <article class="project" id="goldfinger">
                 <h2 class="project-title">
                     goldfinger
                     <span>2025</span>
@@ -394,7 +415,7 @@
                 <p class="project-desc">
                     a chess engine written in go that peaked at ~2000 lichess elo.
                 </p>
-                <div class="project-body">
+                <div class="project-body" id="goldfinger-body">
                     <div class="project-content">
                         <p>
                             a chess engine needs chess. chess needs a board.
@@ -416,9 +437,10 @@
                         </p>
 
                         <figure>
-                            <video loop muted playsinline preload="none" width="400" height="400">
+                            <video loop muted playsinline preload="none" width="400" height="400" poster="assets/goldfinger/self-poster.webp">
                                 <source src="assets/goldfinger/self.webm" type="video/webm">
-                                your browser doesn't support webm :(
+                                <source src="assets/goldfinger/self.mp4" type="video/mp4">
+                                your browser doesn't support html5 video :(
                             </video>
                             <figcaption>playing against itself with 100ms per move &amp; no opening book</figcaption>
                         </figure>
@@ -452,12 +474,12 @@
                     </div>
                 </div>
                 <div class="project-footer">
-                    <button class="read-more">read more</button>
+                    <button class="read-more" aria-expanded="false" aria-controls="goldfinger-body">read more</button>
                     <a class="project-github" href="https://github.com/danielwzyang/goldfinger">github</a>
                 </div>
             </article>
 
-            <article class="project">
+            <article class="project" id="rustic">
                 <h2 class="project-title">
                     rustic
                     <span>2025</span>
@@ -465,7 +487,7 @@
                 <p class="project-desc">
                     a graphics engine written in rust with shading, textures, and a custom scripting language.
                 </p>
-                <div class="project-body">
+                <div class="project-body" id="rustic-body">
                     <div class="project-content">
                         <p>
                             rustic is driven by
@@ -527,9 +549,10 @@
                         </p>
 
                         <figure>
-                            <video loop muted playsinline preload="none" width="400" height="400">
+                            <video loop muted playsinline preload="none" width="400" height="400" poster="assets/rustic/bond-poster.webp">
                                 <source src="assets/rustic/bond.webm" type="video/webm">
-                                your browser doesn't support webm :(
+                                <source src="assets/rustic/bond.mp4" type="video/mp4">
+                                your browser doesn't support html5 video :(
                             </video>
                             <figcaption>
                                 <a href="https://github.com/danielwzyang/rustic/blob/main/scripts/bond.mdl">bond.mdl</a>:
@@ -539,12 +562,12 @@
                     </div>
                 </div>
                 <div class="project-footer">
-                    <button class="read-more">read more</button>
+                    <button class="read-more" aria-expanded="false" aria-controls="rustic-body">read more</button>
                     <a class="project-github" href="https://github.com/danielwzyang/rustic">github</a>
                 </div>
             </article>
 
-            <article class="project">
+            <article class="project" id="mypulse">
                 <h2 class="project-title">
                     mypulse
                     <span>2025</span>
@@ -552,7 +575,7 @@
                 <p class="project-desc">
                     attendance dashboard for stuypulse made with astro + supabase with 200+ registered users.
                 </p>
-                <div class="project-body">
+                <div class="project-body" id="mypulse-body">
                     <div class="project-content">
                         <p>
                             mypulse was my first full-stack product that people actually used.
@@ -607,7 +630,7 @@
                     </div>
                 </div>
                 <div class="project-footer">
-                    <button class="read-more">read more</button>
+                    <button class="read-more" aria-expanded="false" aria-controls="mypulse-body">read more</button>
                     <a class="project-github" href="https://github.com/danielwzyang/my.stuypulse.com">github</a>
                 </div>
             </article>
@@ -620,43 +643,93 @@
             a.rel = "noopener noreferrer"
         })
 
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
+
+        function setOpen(project, open, animate = true) {
+            const body = project.querySelector(".project-body")
+            const button = project.querySelector(".read-more")
+            if (project.classList.contains("open") === open) return
+
+            // cancel anything left over from a toggle that hasn't finished animating
+            project._cleanup?.()
+            project._cleanup = null
+
+            project.classList.toggle("open", open)
+            button.textContent = open ? "read less" : "read more"
+            button.setAttribute("aria-expanded", open)
+            body.inert = !open
+
+            const videos = project.querySelectorAll("video")
+            if (!open) videos.forEach(v => v.pause())
+            else if (reduceMotion.matches) videos.forEach(v => v.controls = true)
+            else videos.forEach(v => v.play().catch(() => {}))
+
+            if (!animate || reduceMotion.matches) {
+                if (open) {
+                    body.style.height = "auto"
+                } else {
+                    // keep the button where it was on screen
+                    const before = button.getBoundingClientRect().top
+                    body.style.height = "0"
+                    window.scrollBy(0, button.getBoundingClientRect().top - before)
+                }
+                return
+            }
+
+            const onEnd = (e) => {
+                if (e.target !== body || e.propertyName !== "height") return
+                cleanup()
+                if (open) body.style.height = "auto"
+            }
+            let observer = null
+            let frame = 0
+            const cleanup = () => {
+                body.removeEventListener("transitionend", onEnd)
+                observer?.disconnect()
+                cancelAnimationFrame(frame)
+                project._cleanup = null
+            }
+            project._cleanup = cleanup
+            body.addEventListener("transitionend", onEnd)
+
+            if (open) {
+                body.style.height = body.scrollHeight + "px"
+            } else {
+                const startY = window.scrollY
+                const startHeight = body.offsetHeight
+
+                observer = new ResizeObserver(() => {
+                    const delta = startHeight - body.offsetHeight
+                    window.scrollTo({ top: startY - delta, behavior: "instant" })
+                })
+                observer.observe(body)
+
+                body.style.height = body.offsetHeight + "px"
+                frame = requestAnimationFrame(() => {
+                    frame = requestAnimationFrame(() => body.style.height = "0")
+                })
+            }
+        }
+
         const projects = document.querySelectorAll(".project")
 
         projects.forEach(project => {
-            const body = project.querySelector(".project-body")
-            const button = project.querySelector(".read-more")
-
-            button.addEventListener("click", () => {
-                const open = project.classList.contains("open")
-
-                if (open) {
-                    const startY = window.scrollY
-                    const startHeight = body.offsetHeight
-
-                    const observer = new ResizeObserver(() => {
-                        const delta = startHeight - body.offsetHeight
-                        window.scrollTo({ top: startY - delta, behavior: "instant" })
-                    })
-
-                    observer.observe(body)
-                    body.style.height = body.scrollHeight + "px"
-
-                    requestAnimationFrame(() => requestAnimationFrame(() => body.style.height = "0"))
-
-                    body.addEventListener("transitionend", () => observer.disconnect(), { once: true })
-                } else {
-                    body.style.height = body.scrollHeight + "px"
-                    body.addEventListener("transitionend", () => body.style.height = "auto", { once: true })
-                }
-                
-                project.classList.toggle("open")
-                button.textContent = open ? "read more" : "read less"
-
-                const videos = project.querySelectorAll("video")
-                if (open) videos.forEach(v => v.pause())
-                else videos.forEach(v => v.play())
+            project.querySelector(".project-body").inert = true
+            project.querySelector(".read-more").addEventListener("click", () => {
+                setOpen(project, !project.classList.contains("open"))
             })
         })
+
+        // danielyang.cc/#goldfinger opens that project
+        function openFromHash() {
+            const target = location.hash ? document.getElementById(location.hash.slice(1)) : null
+            if (target?.classList.contains("project")) {
+                setOpen(target, true, false)
+                target.scrollIntoView()
+            }
+        }
+        openFromHash()
+        window.addEventListener("hashchange", openFromHash)
     </script>
 </body>
 
